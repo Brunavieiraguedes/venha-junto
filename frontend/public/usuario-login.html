@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venha Junto • Entrar</title>
+
+  <link rel="stylesheet" href="./css/global.css" />
+  <link rel="stylesheet" href="./css/auth.css" />
+</head>
+
+<body>
+  <div class="vj-auth">
+    <div class="vj-top">
+      <a href="./index.html" aria-label="Voltar ao início">← Voltar ao início</a>
+    </div>
+
+    <header class="vj-hero" aria-label="Cabeçalho">
+      <h1>Bem-vindo ao <span class="accent">Venha Junto</span></h1>
+      <p>Turismo Acessível em São Paulo</p>
+    </header>
+
+    <main class="vj-center" role="main">
+      <section class="vj-card" aria-label="Entrar">
+        <div class="vj-card__inner">
+          <nav class="vj-tabs" aria-label="Alternar entre entrar e cadastrar">
+            <a class="vj-tab" href="./usuario-login.html" aria-current="page">Entrar</a>
+            <a class="vj-tab" href="./usuario-criar-conta.html">Cadastrar</a>
+          </nav>
+
+          <h2 class="vj-title">Acessar conta</h2>
+          <p class="vj-sub">Entre com seu e-mail e senha para continuar</p>
+
+          <form id="formLogin" class="vj-form" autocomplete="on" novalidate>
+            <div class="vj-field">
+              <label for="email">E-mail</label>
+              <div class="vj-input">
+                <svg class="vj-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" />
+                  <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <input id="email" name="email" type="email" placeholder="seu@email.com" />
+              </div>
+              <small id="emailError" class="vj-error"></small>
+            </div>
+
+            <div class="vj-field">
+              <label for="senha">Senha</label>
+              <div class="vj-input">
+                <svg class="vj-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="2"/>
+                  <path d="M6 11h12v10H6z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <input id="senha" name="senha" type="password" placeholder="••••••••" />
+                <button class="vj-eye" type="button" data-eye="senha" aria-label="Mostrar/ocultar senha">
+                  <span>👁</span>
+                </button>
+              </div>
+              <small id="senhaError" class="vj-error"></small>
+
+              <div class="vj-link-row" style="justify-content:flex-end;">
+                <a href="#" onclick="alert('Depois eu te faço a tela de recuperar senha 😉'); return false;">Esqueceu a senha?</a>
+              </div>
+            </div>
+
+            <div class="vj-actions">
+              <button class="vj-btn vj-btn--primary" type="submit">Entrar</button>
+              <div class="vj-link-row">
+                <span>Não possui conta?</span>
+                <a href="./usuario-criar-conta.html">Cadastrar</a>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./js/api.js" defer></script>
+  <script src="./js/usuario-auth-ui.js" defer></script>
+  <script src="./js/vlibras.js" defer></script>
+</body>
+</html>

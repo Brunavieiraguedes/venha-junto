@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Venha Junto • Cadastro do Estabelecimento</title>
+
+  <link rel="stylesheet" href="./css/parceiro-cadastro.css" />
+
+  <!-- Leaflet (OpenStreetMap) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+</head>
+
+<body>
+  <div class="layout">
+    <!-- Sidebar (admin/parceiro) -->
+    <aside class="sidebar" aria-label="Área do Parceiro">
+      <div class="brand">
+        <div class="brandIcon">📍</div>
+        <div class="brandTxt">
+          <strong>Venha Junto</strong>
+          <small>Área do Parceiro</small>
+        </div>
+      </div>
+
+      <div class="pill" id="statusPill">Em cadastro</div>
+
+      <div class="menuTitle">Menu</div>
+      <nav class="menu">
+        <a class="active" href="./parceiro-cadastro-estabelecimento.html">Cadastro</a>
+        <a href="./parceiro-status.html">Status</a>
+      </nav>
+
+      <div class="spacer"></div>
+
+      <div class="user">
+        <div class="userAvatar">🤝</div>
+        <div class="userTxt">
+          <strong>Parceiro</strong>
+          <small id="partnerEmail">parceiro@venhajunto.com</small>
+        </div>
+      </div>
+
+      <a class="btnGhost" href="./parceiro-login.html">Sair</a>
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="main">
+      <header class="topbar">
+        <div class="crumbs">
+          <strong>Cadastro do Estabelecimento</strong>
+          <span>•</span>
+          <span>Preencha as etapas abaixo</span>
+        </div>
+
+        <a class="toplink" href="./index.html">Voltar ao site</a>
+      </header>
+
+      <!-- STEPS -->
+      <section class="steps" aria-label="Etapas do cadastro">
+        <div class="step active" data-step="1">
+          <div class="num">1</div>
+          <div class="lbl">
+            <strong>Informações Básicas</strong>
+            <small>Conte-nos sobre o estabelecimento</small>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step" data-step="2">
+          <div class="num">2</div>
+          <div class="lbl">
+            <strong>Documentação</strong>
+            <small>Dados para validação</small>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step" data-step="3">
+          <div class="num">3</div>
+          <div class="lbl">
+            <strong>Fotos & Acessibilidade</strong>
+            <small>Recursos e evidências</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD FORM -->
+      <section class="card">
+        <div class="cardHead">
+          <div class="cardIcon">🏠</div>
+          <div>
+            <h1 id="cardTitle">Informações Básicas</h1>
+            <p id="cardSubtitle">Conte-nos sobre seu estabelecimento</p>
+          </div>
+        </div>
+
+        <form id="formCadastro" class="form" novalidate>
+          <!-- STEP 1 -->
+          <div class="panel active" data-panel="1">
+            <div class="grid2">
+              <div class="field">
+                <label for="nome">Nome do Estabelecimento *</label>
+                <input id="nome" name="nome" placeholder="Ex: Restaurante Acessível, Hotel Inclusivo..." required />
+              </div>
+
+              <div class="field">
+                <label for="tipo">Tipo de Estabelecimento *</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="">Selecione o tipo</option>
+                  <option>Hotel</option>
+                  <option>Restaurante</option>
+                  <option>Atração</option>
+                  <option>Passeio</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="descricao">Descrição detalhada *</label>
+              <textarea
+                id="descricao"
+                name="descricao"
+                rows="4"
+                placeholder="Descreva diferenciais, acessibilidade, o que torna a experiência especial..."
+                minlength="100"
+                required
+              ></textarea>
+              <small class="help">Mínimo 100 caracteres. Seja específica sobre acessibilidade.</small>
+            </div>
+
+            <div class="grid2">
+              <div class="field">
+                <label for="endereco">Endereço completo *</label>
+                <input id="endereco" name="endereco" placeholder="Rua, número, complemento" required />
+              </div>
+
+              <div class="field">
+                <label for="bairro">Bairro *</label>
+                <input id="bairro" name="bairro" placeholder="Ex: Vila Madalena" required />
+              </div>
+            </div>
+
+            <div class="grid2">
+              <div class="field">
+                <label for="cep">CEP *</label>
+                <input id="cep" name="cep" placeholder="00000-000" required />
+              </div>
+
+              <div class="field">
+                <label for="cidade">Cidade *</label>
+                <select id="cidade" name="cidade" required>
+                  <option>São Paulo</option>
+                  <option>Santo André</option>
+                  <option>São Bernardo do Campo</option>
+                  <option>Osasco</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- LOCALIZAÇÃO -->
+            <div class="mapWrap">
+              <div class="mapTop">
+                <div>
+                  <strong>Localização no mapa *</strong>
+                  <small>Use “Buscar endereço” ou “Minha localização” e ajuste o pin.</small>
+                </div>
+
+                <div class="mapActions">
+                  <button class="btnLight" id="btnBuscarEndereco" type="button">Buscar endereço</button>
+                  <button class="btnLight" id="btnMinhaLocalizacao" type="button">Minha localização</button>
+                </div>
+              </div>
+
+              <div id="map" class="map"></div>
+
+              <div class="grid2">
+                <div class="field">
+                  <label for="lat">Latitude *</label>
+                  <input id="lat" name="lat" placeholder="-23.5617" readonly required />
+                </div>
+                <div class="field">
+                  <label for="lng">Longitude *</label>
+                  <input id="lng" name="lng" placeholder="-46.6560" readonly required />
+                </div>
+              </div>
+
+              <small class="help">
+                Dica: você pode arrastar o pin para ajustar a posição exata.
+              </small>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="panel" data-panel="2">
+            <div class="grid2">
+              <div class="field">
+                <label for="cnpj">CNPJ (opcional)</label>
+                <input id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" />
+              </div>
+
+              <div class="field">
+                <label for="responsavel">Responsável *</label>
+                <input id="responsavel" name="responsavel" placeholder="Nome do responsável" required />
+              </div>
+            </div>
+
+            <div class="grid2">
+              <div class="field">
+                <label for="telefone">Telefone *</label>
+                <input id="telefone" name="telefone" placeholder="(11) 99999-9999" required />
+              </div>
+
+              <div class="field">
+                <label for="emailContato">E-mail de contato *</label>
+                <input id="emailContato" name="emailContato" type="email" placeholder="contato@empresa.com" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="doc">Documentos (simulação)</label>
+              <input id="doc" name="doc" type="file" multiple />
+              <small class="help">Para o TCC, pode ser apenas simulado no front-end.</small>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="panel" data-panel="3">
+            <div class="field">
+              <label>Recursos de acessibilidade</label>
+              <div class="checks">
+                <label><input type="checkbox" name="acc" value="Rampa" /> Rampa de acesso</label>
+                <label><input type="checkbox" name="acc" value="Banheiro acessível" /> Banheiro acessível</label>
+                <label><input type="checkbox" name="acc" value="Elevador" /> Elevador</label>
+                <label><input type="checkbox" name="acc" value="Piso tátil" /> Piso tátil</label>
+                <label><input type="checkbox" name="acc" value="Cardápio acessível" /> Cardápio acessível</label>
+                <label><input type="checkbox" name="acc" value="Atendimento inclusivo" /> Atendimento inclusivo</label>
+              </div>
+            </div>
+
+            <!-- ✅ Upload real (capa) -->
+            <div class="field">
+              <label for="fotos">Foto de capa (upload) *</label>
+              <input id="fotos" name="fotos" type="file" accept="image/jpeg,image/png,image/webp,image/*" />
+              <small class="help">
+                Envie 1 imagem (JPG/PNG/WEBP) até 5MB. Ela será usada como capa do local.
+              </small>
+            </div>
+
+            <!-- ✅ Campo URL fica opcional (não obrigatório) -->
+            <div class="field">
+              <label for="cover_image">Foto de capa (URL) (opcional)</label>
+              <input
+                id="cover_image"
+                name="cover_image"
+                type="url"
+                inputmode="url"
+                placeholder="https://exemplo.com/minha-foto.jpg"
+                autocomplete="off"
+                pattern="https?://.*"
+              />
+              <small class="help">
+                Se você preferir, pode colar uma URL. Mas o recomendado é usar upload.
+              </small>
+            </div>
+          </div>
+
+          <!-- FOOTER ACTIONS -->
+          <div class="actions">
+            <button id="btnVoltar" class="btnGhost2" type="button">Voltar</button>
+            <button id="btnProximo" class="btnPrimary" type="button">Próximo</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script src="./js/parceiro-cadastro-estabelecimento.js"></script>
+   <script src="./js/vlibras.js" defer></script>
+</body>
+</html>

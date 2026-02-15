@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estabelecimentos • Admin • Venha Junto</title>
+  <link rel="stylesheet" href="./css/global.css"/>
+  <link rel="stylesheet" href="./css/admin.css"/>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar" aria-label="Menu do admin">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🏠</div>
+        <div>
+          <strong>Venha Junto</strong>
+          <span>Área do Parceiro</span>
+        </div>
+      </div>
+      <nav>
+        <a href="./dashboard.html" >Dashboard</a>
+        <a href="./estabelecimentos.html" aria-current="page">Meus Estabelecimentos</a>
+        <a href="./plano.html" >Meu Plano</a>
+        <hr class="sep" style="background:rgba(255,255,255,.12)"/>
+        <a href="./login.html" class="btn btn--ghost" style="text-align:center">Sair</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main" role="main">
+      <div class="admin-card">
+
+  <h1 style="margin-top:0">Meus Estabelecimentos</h1>
+  <p style="color:var(--muted); font-weight:800">Cadastro/edição (mock). Depois você integra com API.</p>
+
+  <form id="formLocal" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px">
+    <div>
+      <label for="nome" style="font-weight:900">Nome</label>
+      <input id="nome" required style="width:100%; padding:12px; border-radius:14px; border:1px solid var(--line)"/>
+    </div>
+    <div>
+      <label for="tipo" style="font-weight:900">Tipo</label>
+      <select id="tipo" style="width:100%; padding:12px; border-radius:14px; border:1px solid var(--line); font-weight:800">
+        <option value="Hotel">Hotel</option>
+        <option value="Restaurante">Restaurante</option>
+        <option value="Atracao">Atração</option>
+        <option value="Passeio">Passeio</option>
+      </select>
+    </div>
+    <div>
+      <label for="cidade" style="font-weight:900">Cidade</label>
+      <input id="cidade" value="São Paulo" style="width:100%; padding:12px; border-radius:14px; border:1px solid var(--line)"/>
+    </div>
+    <div>
+      <label for="bairro" style="font-weight:900">Bairro</label>
+      <input id="bairro" placeholder="Ex: Centro" style="width:100%; padding:12px; border-radius:14px; border:1px solid var(--line)"/>
+    </div>
+
+    <div style="grid-column:1/-1; display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+      <label style="display:flex; gap:8px; align-items:center; font-weight:900">
+        <input id="acessivel" type="checkbox"/> Acessível
+      </label>
+      <label style="display:flex; gap:8px; align-items:center; font-weight:900">
+        <input id="verificado" type="checkbox"/> Verificado
+      </label>
+      <button class="btn" type="submit">Salvar</button>
+      <span id="msg" style="color:var(--muted); font-weight:800" role="status" aria-live="polite"></span>
+    </div>
+  </form>
+
+  <hr class="sep"/>
+
+  <div id="lista" style="display:grid; gap:10px"></div>
+
+      </div>
+    </main>
+  </div>
+  <script src="./js/estabelecimentos.js" defer></script>
+</body>
+</html>

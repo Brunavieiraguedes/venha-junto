@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venha Junto • Meu Perfil</title>
+
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/perfil.css" />
+  </head>
+
+  <body class="perfil-page">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Topbar mobile -->
+    <header class="mobile-topbar" role="banner">
+      <button
+        id="btnMenu"
+        class="btn btn--ghost"
+        aria-controls="sidebar"
+        aria-expanded="false"
+        type="button"
+      >
+        ☰ Menu
+      </button>
+
+      <div class="title">Venha Junto</div>
+
+      <a class="btn btn--ghost" href="./index.html">Início</a>
+    </header>
+
+    <div class="page">
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="sidebar"
+        data-open="false"
+        aria-label="Navegação principal"
+      >
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <img
+              src="../assets/img/logo-acessibilidade.png"
+              alt=""
+              class="logo-img"
+            />
+          </div>
+          <div>
+            <strong>Venha Junto</strong>
+            <span>Turismo Acessível em São Paulo</span>
+          </div>
+        </div>
+
+        <p class="nav-title">Área pública</p>
+        <nav class="menu">
+          <a href="./index.html">Início</a>
+          <a href="./explorar.html">Explorar Locais</a>
+          <a href="./favoritos.html">Meus Favoritos</a>
+          <a href="./parceiro.html">Sou parceiro</a>
+        </nav>
+
+        <div id="userBox" class="userbox">
+          <div class="avatar" aria-hidden="true">👤</div>
+          <div>
+            <strong id="userName">Usuário</strong>
+            <small id="userEmail">visitante@venhajunto.com</small>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Conteúdo -->
+      <main id="conteudo" class="main" role="main">
+        <div class="perfil-wrap">
+          <!-- Ações topo -->
+          <div class="perfil-head">
+            <div></div>
+
+            <div class="perfil-actions">
+              <a class="btn btn--ghost" href="./index.html">↩ Voltar</a>
+              <button id="btnSalvarTopo" class="btn btn--ghost" type="button">
+                💾 Salvar
+              </button>
+            </div>
+          </div>
+
+          <div class="perfil-grid">
+            <section class="card perfil-card">
+              <h2>Seu perfil</h2>
+              <p class="muted">
+               
+              </p>
+
+              <!-- Avatar -->
+              <div class="avatar-uploader">
+                <div class="avatar-row">
+                  <div class="avatar-ring">
+                    <div class="avatar-ring-inner">
+                      <img id="avatarImg" alt="Foto do usuário" />
+                      <div id="avatarFallback" class="avatar-fallback">
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M20 21a8 8 0 0 0-16 0"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <button
+                      id="btnAvatarPick"
+                      class="avatar-action"
+                      type="button"
+                      aria-label="Alterar foto"
+                    >
+                      📷
+                    </button>
+
+                    <input
+                      id="avatarInput"
+                      class="avatar-input"
+                      type="file"
+                      accept="image/png,image/jpeg,image/webp"
+                    />
+                  </div>
+
+                  <div class="avatar-actions">
+                    <button
+                      id="btnAvatarRemove"
+                      class="btn btn--ghost"
+                      type="button"
+                    >
+                       Remover foto
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form -->
+              <div class="field">
+                <label for="nome">Nome completo</label>
+                <input
+                  id="nome"
+                  type="text"
+                  placeholder="Digite seu nome completo"
+                />
+              </div>
+
+              <div class="row2">
+                <div class="field">
+                  <label for="email">E-mail</label>
+                  <input id="email" type="email" disabled />
+                  <small class="hint">O e-mail não pode ser alterado.</small>
+                </div>
+
+                <div class="field">
+                  <label for="telefone">Telefone</label>
+                  <input
+                    id="telefone"
+                    type="tel"
+                    placeholder="(11) 99999-9999"
+                  />
+                </div>
+              </div>
+
+              <button id="btnSalvar" class="btn btn-full" type="button">
+                💾 Salvar alterações
+              </button>
+
+              <button
+                id="btnSair"
+                class="btn btn--danger btn-full"
+                type="button"
+              >
+                Sair da conta
+              </button>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Avatar Script -->
+    <script>
+      (function () {
+        const input = document.getElementById("avatarInput");
+        const btnPick = document.getElementById("btnAvatarPick");
+        const btnRemove = document.getElementById("btnAvatarRemove");
+
+        const img = document.getElementById("avatarImg");
+        const fallback = document.getElementById("avatarFallback");
+
+        let currentObjectUrl = null;
+
+        function applyPreview(url) {
+          fallback.style.display = "none";
+          img.src = url;
+          img.style.display = "block";
+        }
+
+        function clearPreview() {
+          if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+          img.src = "";
+          img.style.display = "none";
+          fallback.style.display = "grid";
+        }
+
+        async function uploadToBackend(file) {
+          const fd = new FormData();
+          fd.append("file", file);
+
+          const res = await fetch(
+            "http://127.0.0.1:8000/users/me/avatar",
+            {
+              method: "POST",
+              body: fd,
+              credentials: "include",
+            }
+          );
+
+          if (!res.ok) throw new Error("Erro ao enviar avatar.");
+
+          applyPreview(
+            "http://127.0.0.1:8000/users/me/avatar?t=" + Date.now()
+          );
+          document.dispatchEvent(new Event("userbox:refresh"));
+        }
+
+        async function removeFromBackend() {
+          await fetch("http://127.0.0.1:8000/users/me/avatar", {
+            method: "DELETE",
+            credentials: "include",
+          });
+        }
+
+        btnPick.addEventListener("click", () => input.click());
+
+        input.addEventListener("change", async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          currentObjectUrl = URL.createObjectURL(file);
+          applyPreview(currentObjectUrl);
+
+          try {
+            await uploadToBackend(file);
+          } catch {
+            clearPreview();
+          }
+        });
+
+        btnRemove.addEventListener("click", async () => {
+          await removeFromBackend();
+          clearPreview();
+        });
+
+        window.addEventListener("load", () => {
+          const url =
+            "http://127.0.0.1:8000/users/me/avatar?t=" + Date.now();
+          fetch(url, { credentials: "include" })
+            .then((r) => r.ok && applyPreview(url))
+            .catch(() => {});
+        });
+      })();
+    </script>
+
+    <script src="./js/api.js" defer></script>
+    <script src="./js/userbox.js" defer></script>
+    <script src="./js/page-guard.js" defer></script>
+    <script src="./js/perfil.js" defer></script>
+    <script src="./js/vlibras.js" defer></script>
+  </body>
+</html>

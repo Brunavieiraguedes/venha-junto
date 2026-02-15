@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venha Junto • Criar conta</title>
+
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/auth.css" />
+  </head>
+
+  <body>
+    <div class="vj-auth">
+      <div class="vj-top">
+        <a href="./index.html" aria-label="Voltar ao início">← Voltar ao início</a>
+      </div>
+
+      <header class="vj-hero" aria-label="Cabeçalho">
+        <h1>Bem-vindo ao <span class="accent">Venha Junto</span></h1>
+        <p>Turismo Acessível em São Paulo</p>
+      </header>
+
+      <main class="vj-center" role="main">
+        <section class="vj-card" aria-label="Criar conta">
+          <div class="vj-card__inner">
+            <nav class="vj-tabs" aria-label="Alternar entre entrar e cadastrar">
+              <a class="vj-tab" href="./usuario-login.html">Entrar</a>
+              <a class="vj-tab" href="./usuario-criar-conta.html" aria-current="page">Cadastrar</a>
+            </nav>
+
+            <h2 class="vj-title">Criar conta</h2>
+            <p class="vj-sub">Preencha os dados abaixo para se cadastrar</p>
+
+            <form id="formSignup" class="vj-form" autocomplete="on" novalidate>
+              <!-- NOME -->
+              <div class="vj-field">
+                <label for="nome">Nome completo</label>
+                <div class="vj-input">
+                  <svg class="vj-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                  <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required />
+                </div>
+                <small id="nomeError" class="vj-error"></small>
+              </div>
+
+              <!-- EMAIL -->
+              <div class="vj-field">
+                <label for="email">E-mail</label>
+                <div class="vj-input">
+                  <svg class="vj-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" />
+                    <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  <input id="email" name="email" type="email" placeholder="seu@email.com" required />
+                </div>
+                <small id="emailError" class="vj-error"></small>
+              </div>
+
+              <!-- TELEFONE -->
+              <div class="vj-field">
+                <label for="telefone">Telefone</label>
+                <div class="vj-input">
+                  <svg class="vj-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.3a2 2 0 0 1-.5 2.1L9 10a16 16 0 0 0 5 5l.9-1.1a2 2 0 0 1 2.1-.5c.7.3 1.5.5 2.3.6A2 2 0 0 1 22 16.9Z"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <input id="telefone" name="telefone" type="tel" placeholder="(00) 00000-0000" />
+                </div>
+              </div>
+
+              <!-- SENHAS -->
+              <div class="vj-row">
+                <!-- SENHA -->
+                <div class="vj-field">
+                  <label for="senha">Senha</label>
+                  <div class="vj-input">
+                    <svg class="vj-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="2" />
+                      <path d="M6 11h12v10H6z" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    <input
+                      id="senha"
+                      name="senha"
+                      type="password"
+                      placeholder="Mínimo 6 caracteres"
+                      minlength="6"
+                      required
+                    />
+                    <button class="vj-eye" type="button" data-eye="senha" aria-label="Mostrar/ocultar senha">
+                      <span>👁</span>
+                    </button>
+                  </div>
+                  <small id="senhaError" class="vj-error"></small>
+                </div>
+
+                <!-- CONFIRMAR -->
+                <div class="vj-field">
+                  <label for="confirmar">Confirmar senha</label>
+                  <div class="vj-input">
+                    <svg class="vj-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="2" />
+                      <path d="M6 11h12v10H6z" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    <input
+                      id="confirmar"
+                      name="confirmar"
+                      type="password"
+                      placeholder="Confirme sua senha"
+                      minlength="6"
+                      required
+                    />
+                    <button class="vj-eye" type="button" data-eye="confirmar" aria-label="Mostrar/ocultar confirmação">
+                      <span>👁</span>
+                    </button>
+                  </div>
+                  <small id="confirmarError" class="vj-error"></small>
+                </div>
+              </div>
+
+              <!-- ACEITE -->
+              <label class="vj-check">
+                <input id="aceite" type="checkbox" required />
+                <span>
+                  Ao me cadastrar, concordo com os
+                  <a href="./termos.html" target="_blank" rel="noopener">Termos de Uso</a>
+                  e a
+                  <a href="./privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.
+                </span>
+              </label>
+
+              <!-- AÇÕES -->
+              <div class="vj-actions">
+                <button class="vj-btn vj-btn--green" type="submit">Criar conta</button>
+                <div class="vj-link-row">
+                  <span>Já possui uma conta?</span>
+                  <a href="./usuario-login.html">Entrar</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/tests/signup-validation.js"></script>
+    <script src="./js/usuario-auth-ui.js" defer></script>
+    <script src="./js/vlibras.js" defer></script>
+  </body>
+</html>

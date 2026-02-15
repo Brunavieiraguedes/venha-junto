@@ -1,0 +1,306 @@
+/* =======================================================
+   EXPLORAR • venhajunto
+   (somente HERO + filtros; cards/grid vêm do home.css)
+   ======================================================= */
+
+/* ===== Header (se você usar em alguma variação) ===== */
+.page-header{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom: 18px;
+}
+
+.back-btn{
+  width:44px;
+  height:44px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background:#fff;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  box-shadow: 0 10px 24px rgba(2,6,23,.06);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.header-text h1{
+  margin:0;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.header-text p{
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* =======================================================
+   HERO (igual ao index, somente no Explorar)
+   ======================================================= */
+.hero--inner{
+  position: relative;
+  padding: 26px 18px 28px;
+  background:
+    radial-gradient(1200px 600px at 20% 15%, rgba(255,255,255,.08), transparent 60%),
+    radial-gradient(900px 500px at 85% 35%, rgba(34,197,94,.12), transparent 60%),
+    linear-gradient(135deg, #0b2b7a, #1636a5 40%, #2b2fd3);
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero__container{
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.hero__head{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.hero__text h1{
+  margin: 0;
+  font-size: clamp(28px, 4.6vw, 48px);
+  line-height: 1.05;
+  font-weight: 1000;
+  letter-spacing: -0.02em;
+}
+
+.hero__text p{
+  margin: 6px 0 0;
+  color: rgba(226,232,240,.95);
+  font-weight: 800;
+}
+
+/* botão voltar no hero */
+.back-btn--hero{
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.10);
+  color: #fff;
+}
+
+/* =======================================================
+   Busca / filtros no topo
+   ======================================================= */
+.top-search{
+  padding: 16px;
+  border-radius: 22px;
+}
+
+.search-row{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+}
+
+.search-input{
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border: 1px solid #dbe1ee;
+  border-radius: 16px;
+  background:#fff;
+  padding: 12px 14px;
+  min-width: 0;
+}
+
+.search-input .sicon{ opacity:.65; }
+
+.search-input input{
+  border:0;
+  outline:none;
+  width:100%;
+  font-weight: 700;
+  color: var(--text);
+  background:transparent;
+  min-width: 0;
+}
+
+.btn-filtros{
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-weight: 900;
+}
+
+/* card da busca igual padrão do index */
+.top-search--hero{
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.24);
+  padding: 14px;
+}
+
+/* no hero, o ghost precisa ficar mais “claro” */
+.hero--inner .btn--ghost{
+  border-color: rgba(15,23,42,.14);
+  background: rgba(255,255,255,.65);
+}
+.hero--inner .btn--ghost:hover{
+  background: rgba(255,255,255,.85);
+}
+
+/* =======================================================
+   Área de conteúdo (abaixo do hero)
+   (usa mesma largura do index)
+   ======================================================= */
+.content{
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 18px 0 40px;
+}
+
+/* =======================================================
+   Painel de filtros
+   ======================================================= */
+.filters-panel{
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 22px;
+}
+
+.filters-head{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filters-head h2{
+  margin: 0;
+  font-size: 18px;
+  flex:1;
+  min-width: 180px;
+}
+
+.xbtn{
+  width:36px;
+  height:36px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background:#fff;
+  cursor:pointer;
+  font-weight: 900;
+}
+
+.linkbtn{
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  color:#475569;
+  font-weight: 900;
+}
+
+.filters-grid{
+  margin-top: 16px;
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.field label{
+  display:block;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.field select{
+  width:100%;
+  border: 1px solid #dbe1ee;
+  border-radius: 16px;
+  padding: 12px 12px;
+  background:#fff;
+  font-weight: 800;
+}
+
+.filters-actions{
+  margin-top: 14px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+/* =======================================================
+   Contador
+   ======================================================= */
+.count{
+  margin: 18px 0 14px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* =======================================================
+   Responsivo
+   ======================================================= */
+@media (max-width: 1200px){
+  .filters-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px){
+  .search-row{
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 520px){
+  .filters-grid{
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   ❤️ Favoritos (coração) - igual favoritos
+========================= */
+#listaLocais .local-card{ position: relative; }
+
+#listaLocais .fav-btn{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 38px;
+  height: 38px;
+  padding: 0;
+
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.92);
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(2,6,23,.12);
+  z-index: 10;
+}
+
+/* se o JS colocar acidentalmente "btn", não vira barra */
+#listaLocais .fav-btn.btn{
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+
+#listaLocais .fav-btn .fav-icon{
+  font-size: 18px;
+  line-height: 1;
+  color: #9ca3af;
+}
+
+#listaLocais .fav-btn.is-active .fav-icon{
+  color: #ef4444;
+}
+
+#listaLocais .fav-btn:focus-visible{
+  outline: 3px solid rgba(37,99,235,.45);
+  outline-offset: 2px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard • Admin • Venha Junto</title>
+  <link rel="stylesheet" href="./css/global.css"/>
+  <link rel="stylesheet" href="./css/admin.css"/>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar" aria-label="Menu do admin">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🏠</div>
+        <div>
+          <strong>Venha Junto</strong>
+          <span>Área do Parceiro</span>
+        </div>
+      </div>
+      <nav>
+        <a href="./dashboard.html" aria-current="page">Dashboard</a>
+        <a href="./estabelecimentos.html" >Meus Estabelecimentos</a>
+        <a href="./plano.html" >Meu Plano</a>
+        <hr class="sep" style="background:rgba(255,255,255,.12)"/>
+        <a href="./login.html" class="btn btn--ghost" style="text-align:center">Sair</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main" role="main">
+      <div class="admin-card">
+
+  <h1 style="margin-top:0">Dashboard</h1>
+  <p style="color:var(--muted); font-weight:800">Visão geral (mock) — depois você liga no backend.</p>
+
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:12px">
+    <div class="admin-card" style="box-shadow:none; border:1px solid var(--line)">
+      <strong>Locais cadastrados</strong>
+      <div style="font-size:34px; font-weight:900; margin-top:6px">4</div>
+    </div>
+    <div class="admin-card" style="box-shadow:none; border:1px solid var(--line)">
+      <strong>Verificados</strong>
+      <div style="font-size:34px; font-weight:900; margin-top:6px">2</div>
+    </div>
+    <div class="admin-card" style="box-shadow:none; border:1px solid var(--line)">
+      <strong>Avaliação média</strong>
+      <div style="font-size:34px; font-weight:900; margin-top:6px">4.7</div>
+    </div>
+  </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="./js/dashboard.js" defer></script>
+</body>
+</html>

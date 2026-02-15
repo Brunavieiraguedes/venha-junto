@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explorar Locais • Venha Junto</title>
+
+    <link rel="stylesheet" href="./css/global.css"/>
+  <link rel="stylesheet" href="./css/home.css"/>
+  <link rel="stylesheet" href="./css/explorar.css"/>
+</head>
+
+<body data-auth="required">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Topbar mobile -->
+  <header class="mobile-topbar" role="banner">
+    <button id="btnMenu" class="btn btn--ghost" aria-controls="sidebar" aria-expanded="false" type="button">☰ Menu</button>
+    <div class="title">Venha Junto</div>
+    <a class="btn btn--ghost" href="./parceiro.html">Sou parceiro</a>
+  </header>
+
+  <div class="page">
+    <!-- Sidebar pública -->
+    <aside id="sidebar" class="sidebar" data-open="false" aria-label="Navegação principal">
+      <div class="brand" aria-label="Marca Venha Junto">
+        <div class="logo" aria-hidden="true">
+  <img src="../assets/img/logo-acessibilidade.png" alt="" class="logo-img">
+</div>
+
+        <div>
+          <strong>Venha Junto</strong>
+          <span>Turismo Acessível em São Paulo</span>
+        </div>
+      </div>
+
+      <p class="nav-title">Área pública</p>
+      <nav class="menu" aria-label="Menu público">
+        <a href="./index.html">Início</a>
+        <a href="./explorar.html" aria-current="page">Explorar Locais</a>
+        <a href="./favoritos.html">Meus Favoritos</a>
+        <a href="./parceiro.html">Sou parceiro</a>
+      </nav>
+
+      <!-- ✅ USERBOX CORRETO -->
+      <div id="userBox" class="userbox" aria-label="Usuário atual" style="cursor: pointer">
+        <div class="avatar" aria-hidden="true">👤</div>
+        <div>
+          <strong id="userName" style="display:block">Visitante</strong>
+          <small id="userEmail">visitante@venhajunto.com</small>
+        </div>
+      </div>
+    </aside>
+
+    <main id="conteudo" class="main" role="main">
+      <!-- ✅ HERO IGUAL AO INDEX (apenas no conteúdo, não mexe na lateral) -->
+      <section class="hero hero--inner" aria-label="Cabeçalho Explorar Locais">
+        <div class="hero__container">
+          <header class="hero__head">
+            <button class="back-btn back-btn--hero" type="button" aria-label="Voltar" onclick="window.location.href='./index.html'"
+>←</button>
+
+            <div class="hero__text">
+              <h1>Explorar Locais</h1>
+              <p>Descubra estabelecimentos em São Paulo com filtros personalizados</p>
+            </div>
+          </header>
+
+          <!-- Busca + botão filtros no HERO (com card igual ao index) -->
+          <section class="top-search top-search--hero" aria-label="Busca e filtros">
+            <div class="search-row">
+              <div class="search-input">
+                <span class="sicon" aria-hidden="true">🔎</span>
+                <input id="q" type="search" placeholder="Buscar por nome, descrição ou bairro..." />
+              </div>
+
+              <button id="btnFiltros" class="btn btn--ghost btn-filtros" type="button" aria-expanded="false" aria-controls="painelFiltros">
+                ⚙️ Filtros
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Conteúdo normal abaixo (fundo claro) -->
+      <div class="content">
+        <!-- Painel filtros -->
+        <section id="painelFiltros" class="filters-panel card" hidden aria-label="Filtros avançados">
+          <div class="filters-head">
+            <h2>Filtros Avançados</h2>
+            <button id="btnFecharFiltros" class="xbtn" type="button" aria-label="Fechar filtros">✕</button>
+            <button id="limpar" class="linkbtn" type="button">Limpar Filtros</button>
+          </div>
+
+          <div class="filters-grid">
+            <div class="field">
+              <label for="tipo">Tipo de Local</label>
+              <select id="tipo">
+                <option value="Todos">Todos os tipos</option>
+                <option value="Hotel">Hotéis</option>
+                <option value="Restaurante">Restaurantes</option>
+                <option value="Atracao">Atrações</option>
+                <option value="Passeio">Passeios</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="estilo">Estilo de Viagem</label>
+              <select id="estilo">
+                <option value="Qualquer">Qualquer estilo</option>
+                <option value="Familia">Família</option>
+                <option value="Economico">Econômico</option>
+                <option value="Natureza">Natureza</option>
+                <option value="Gastronomico">Gastronômico</option>
+                <option value="VidaNoturna">Vida Noturna</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="orcamento">Orçamento</label>
+              <select id="orcamento">
+                <option value="Qualquer">Qualquer valor</option>
+                <option value="Gratuito">Gratuito</option>
+                <option value="Ate100">Até R$ 100</option>
+                <option value="100a300">R$ 100 - R$ 300</option>
+                <option value="Acima300">Acima de R$ 300</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="cidade">Cidade</label>
+              <select id="cidade">
+                 <option value="">Todas</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Santo André">Santo André</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filters-actions">
+            <button id="filtrar" class="btn" type="button">Aplicar Filtros</button>
+          </div>
+        </section>
+
+        <!-- contador -->
+        <div class="count" aria-live="polite">
+          <strong id="countLocais">0</strong> locais encontrados
+        </div>
+
+        <!-- lista -->
+        <section>
+          <div id="listaLocais"aria-live="polite"></div>
+        </section>
+      </div>
+
+      <script src="./js/explorar.js" type="module"></script>
+    </main>
+  </div>
+
+  <!-- ✅ IMPORTS (ORDEM CERTA) -->
+  <script src="./js/api.js" defer></script>
+  <script src="./js/userbox.js" defer></script>
+  <script src="./js/page-guard.js" defer></script>
+  <script src="./js/vlibras.js" defer></script>
+</body>
+</html>

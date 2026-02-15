@@ -1,0 +1,230 @@
+/* =========================
+   Favoritos - Cabeçalho
+========================= */
+.page-header{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom: 22px;
+}
+
+.back-btn{
+  width:44px; height:44px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background:#fff;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  box-shadow: 0 10px 24px rgba(2,6,23,.06);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.header-text h1{
+  margin:0;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.header-text p{
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* =========================
+   Estado vazio
+========================= */
+.empty{
+  margin-top: 34px;
+  padding: 56px 20px;
+  border-radius: 24px;
+  text-align:center;
+  background: radial-gradient(closest-side, rgba(37,99,235,.10), transparent 70%);
+}
+
+.empty-icon{
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  margin: 0 auto 18px;
+  display:grid;
+  place-items:center;
+  background: rgba(244,63,94,.12);
+  border: 1px solid rgba(244,63,94,.20);
+}
+
+.empty-icon .heart{
+  font-size: 44px;
+  color: #ef4444;
+  font-weight: 900;
+}
+
+.empty h2{
+  margin: 10px 0 8px;
+  font-size: 26px;
+}
+
+.empty p{
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.btn-primary{
+  border:0;
+  cursor:pointer;
+  background: var(--primary);
+  color:#fff;
+  padding: 12px 18px;
+  font-weight: 900;
+  border-radius: 14px;
+  box-shadow: 0 12px 26px rgba(37,99,235,.22);
+}
+.btn-primary:hover{ filter: brightness(1.05); }
+
+/* =========================
+   Lista / Grid
+========================= */
+.favorites-list{
+  width: 100%;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+@media (max-width: 1200px){
+  .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px){
+  .header-text h1{ font-size: 34px; }
+  .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+/* =========================
+   Card (mesmo padrão do explorar)
+========================= */
+.local-card{
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  background:#fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow:hidden;
+  text-decoration:none;
+  color: inherit;
+  box-shadow: 0 14px 34px rgba(2,6,23,.06);
+}
+
+.local-card:hover{
+  transform: translateY(-1px);
+  transition: .15s ease;
+}
+
+.local-card img{
+  width:100%;
+  height: 180px;
+  object-fit: cover;
+  display:block;
+}
+
+.imgEmpty{
+  width:100%;
+  height: 180px;
+  display:grid;
+  place-items:center;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-weight: 800;
+}
+
+/* coração */
+.fav-btn{
+  position:absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  box-shadow: 0 10px 24px rgba(2,6,23,.12);
+}
+
+.fav-btn .fav-icon{
+  font-size: 18px;
+  line-height: 1;
+  color: #9ca3af;
+}
+
+.fav-btn.is-active .fav-icon{
+  color: #ef4444;
+}
+
+.local-card .body{
+  padding: 14px 14px 0;
+}
+
+.local-card h3{
+  margin: 0 0 6px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.local-card .meta{
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.local-card .desc{
+  margin: 0;
+  font-size: 13px;
+  color: #111827;
+  opacity: .85;
+  font-weight: 700;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* padrão (quando suportado) */
+  line-clamp: 3;
+
+  /* fallback (Chrome/Edge/Safari) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+.local-card .footer{
+  padding: 12px 14px 16px;
+  margin-top: auto;
+}
+
+.local-card .btn{
+  width:100%;
+  border:0;
+  background: var(--primary);
+  color:#fff;
+  padding: 11px 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor:pointer;
+  box-shadow: 0 12px 26px rgba(37,99,235,.22);
+}
+.local-card .btn:hover{ filter: brightness(1.05); }

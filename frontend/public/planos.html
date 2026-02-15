@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Planos para Estabelecimentos • Venha Junto</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#fff; --text:#0b1220; --muted:#5b677a;
+      --border:#e7ecf4; --shadow: 0 18px 40px rgba(15,23,42,.08);
+      --blue:#2563eb; --green:#16a34a; --purple:#1e40af;
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 70px}
+    .back{
+      width:40px;height:40px;border-radius:14px;background:#fff;border:1px solid var(--border);
+      display:grid;place-items:center;box-shadow:0 10px 26px rgba(15,23,42,.06)
+    }
+    .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    h1{margin:0;font-size:34px}
+    .sub{margin:0;color:var(--muted)}
+    .pill{
+      margin:18px 0 18px;
+      padding:16px;border-radius:18px;border:1px solid #cfe0ff;background:#eef4ff;
+      text-align:center
+    }
+    .pill b{color:#0b3ea8}
+    .why{
+      margin:18px 0; background:#ecfdf5; border:1px solid #bbf7d0; border-radius:18px;
+      padding:18px; text-align:center;
+    }
+    .why h3{margin:0 0 10px}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+    .why-item{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px}
+    .why-item b{display:block;margin-top:8px}
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 24px}
+    .plan{
+      background:var(--card);border:1px solid var(--border);border-radius:18px;
+      box-shadow:0 12px 30px rgba(15,23,42,.06);padding:18px; position:relative;
+      min-height:520px; display:flex; flex-direction:column;
+    }
+    .plan .tagtop{
+      position:absolute; right:12px; top:12px; font-size:12px; padding:4px 10px;
+      border-radius:999px; background:#eef4ff; color:#0b3ea8; border:1px solid #cfe0ff;
+      font-weight:800;
+    }
+    .plan h2{margin:0}
+    .small{color:var(--muted);margin:6px 0 10px}
+    .price{font-size:30px;font-weight:900;margin:6px 0 4px}
+    .price span{font-size:14px;color:var(--muted);font-weight:700}
+    ul{margin:14px 0 0;padding:0;list-style:none}
+    li{display:flex;gap:10px;align-items:flex-start;margin:10px 0;color:#1f2a44}
+    .check{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-weight:900}
+    .check.ok{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
+    .check.no{background:#ffe4e6;color:#9f1239;border:1px solid #fecdd3}
+    .btn{
+      margin-top:auto;
+      display:block;text-align:center;
+      padding:12px 14px;border-radius:12px;font-weight:900;border:1px solid var(--border);
+      background:#fff;
+    }
+    .btn.blue{background:var(--blue);border-color:transparent;color:#fff}
+    .btn.green{background:var(--green);border-color:transparent;color:#fff}
+    .btn.dark{background:#1e40af;border-color:transparent;color:#fff}
+    .most{border:2px solid #22c55e}
+    .dark{
+      background:linear-gradient(180deg,#1e40af 0%, #0b2a78 100%);
+      color:#fff;border-color:transparent;
+    }
+    .dark .small,.dark .price span{color:rgba(255,255,255,.85)}
+    .dark li{color:rgba(255,255,255,.92)}
+    .dark .tagtop{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:#fff}
+    .faq-title{margin:26px 0 10px}
+    .faq-sub{margin:0 0 16px;color:var(--muted)}
+    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .qa{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 12px 30px rgba(15,23,42,.05)}
+    .qa b{display:block;margin-bottom:8px}
+    @media (max-width: 980px){
+      .why-grid,.pricing,.faq{grid-template-columns:1fr}
+      .plan{min-height:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <a class="back" href="./parceiro-dashboard.html" aria-label="Voltar">←</a>
+      <div>
+        <h1>Planos para Estabelecimentos</h1>
+        <p class="sub">Escolha o plano ideal para seu negócio e alcance milhares de turistas que buscam acessibilidade</p>
+      </div>
+    </div>
+
+    <div class="why">
+      <h3>Por que estabelecimentos escolhem o Venha Junto?</h3>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="check ok">✓</div>
+          <b>Mais Visibilidade</b>
+          <small class="small">Destaque seu negócio para milhares de turistas que procuram acessibilidade.</small>
+        </div>
+        <div class="why-item">
+          <div class="check ok">✓</div>
+          <b>Certificação Oficial</b>
+          <small class="small">Verificação profissional de acessibilidade que aumenta a confiança dos clientes.</small>
+        </div>
+        <div class="why-item">
+          <div class="check ok">✓</div>
+          <b>Gestão Inteligente</b>
+          <small class="small">Analytics completo sobre visualizações, perfil dos visitantes e oportunidades.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="pill">
+      <b>Para turistas: totalmente grátis!</b> 🎉
+      <div style="margin-top:6px;color:var(--muted);font-size:14px">
+        Se você é turista, não precisa pagar nada. Explore os locais acessíveis de São Paulo gratuitamente.
+        Os planos abaixo são apenas para estabelecimentos que desejam se destacar.
+      </div>
+    </div>
+
+    <section class="pricing">
+      <!-- Básico -->
+      <article class="plan">
+        <h2>👑 Básico</h2>
+        <div class="small">Ideal para começar no Venha Junto</div>
+        <div class="price">Grátis</div>
+
+        <ul>
+          <li><span class="check ok">✓</span> Cadastro do estabelecimento</li>
+          <li><span class="check ok">✓</span> Até 5 fotos por local</li>
+          <li><span class="check ok">✓</span> Informações básicas de acessibilidade</li>
+          <li><span class="check ok">✓</span> Exibir informações de contato</li>
+          <li><span class="check ok">✓</span> Painel básico de gestão</li>
+        </ul>
+
+        <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px">
+          <div style="font-weight:900;margin-bottom:8px">Limitações:</div>
+          <div style="display:flex;gap:10px;align-items:flex-start;margin:8px 0">
+            <span class="check no">!</span><span>Aparece após locais pagos</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;margin:8px 0">
+            <span class="check no">!</span><span>Sem geolocalização no mapa</span>
+          </div>
+        </div>
+
+        <a class="btn blue" href="./parceiro-dashboard.html" data-plan="Basico">Escolher Básico</a>
+      </article>
+
+      <!-- Pro -->
+      <article class="plan most">
+        <span class="tagtop">⭐ Mais Popular</span>
+        <h2>👑 Pro</h2>
+        <div class="small">Para estabelecimentos que querem crescer</div>
+        <div class="price">R$ 99,90 <span>/mês</span></div>
+
+        <ul>
+          <li><span class="check ok">✓</span> Todas as funcionalidades do Básico</li>
+          <li><span class="check ok">✓</span> Selo “Destaque” nos resultados</li>
+          <li><span class="check ok">✓</span> Fotos ilimitadas + vídeos</li>
+          <li><span class="check ok">✓</span> Geolocalização no mapa interativo</li>
+          <li><span class="check ok">✓</span> Analytics detalhado de visualizações</li>
+          <li><span class="check ok">✓</span> Visualizações ilimitadas</li>
+          <li><span class="check ok">✓</span> Chat direto com clientes interessados</li>
+          <li><span class="check ok">✓</span> 1 verificação de acessibilidade/ano</li>
+          <li><span class="check ok">✓</span> Suporte prioritário</li>
+        </ul>
+
+        <a class="btn green" href="./parceiro-dashboard.html" data-plan="Pro">Escolher Pro</a>
+      </article>
+
+      <!-- Pro Plus -->
+      <article class="plan dark">
+        <span class="tagtop">👑 Premium</span>
+        <h2>👑 Pro Plus</h2>
+        <div class="small">Máxima visibilidade e recursos premium</div>
+        <div class="price">R$ 199,90 <span>/mês</span></div>
+
+        <ul>
+          <li><span class="check ok">✓</span> Todas as funcionalidades do Pro</li>
+          <li><span class="check ok">✓</span> Aparecer sempre no topo (patrocinado)</li>
+          <li><span class="check ok">✓</span> Geolocalização premium com rotas</li>
+          <li><span class="check ok">✓</span> Integração com Google Maps</li>
+          <li><span class="check ok">✓</span> Campanhas de marketing personalizadas</li>
+          <li><span class="check ok">✓</span> Verificações trimestrais</li>
+          <li><span class="check ok">✓</span> Consultoria de acessibilidade</li>
+          <li><span class="check ok">✓</span> Relatórios mensais completos</li>
+          <li><span class="check ok">✓</span> API para integração</li>
+          <li><span class="check ok">✓</span> Gerente de conta dedicado</li>
+        </ul>
+
+        <a class="btn" style="background:#fff;color:#0b2a78;border:0" href="./parceiro-dashboard.html" data-plan="ProPlus">
+          Escolher Pro Plus
+        </a>
+      </article>
+    </section>
+
+    <h2 class="faq-title">Perguntas Frequentes</h2>
+    <p class="faq-sub">Tire suas dúvidas sobre nossos planos</p>
+
+    <section class="faq">
+      <div class="qa">
+        <b>Turistas precisam pagar?</b>
+        <div class="sub">Não! Nosso serviço é 100% gratuito para turistas. Os planos são apenas para estabelecimentos.</div>
+      </div>
+      <div class="qa">
+        <b>Posso cancelar a qualquer momento?</b>
+        <div class="sub">Sim, você pode cancelar a assinatura a qualquer momento, sem taxas. O plano fica ativo até o fim do período pago.</div>
+      </div>
+      <div class="qa">
+        <b>Como funciona a verificação de acessibilidade?</b>
+        <div class="sub">Nossa equipe especializada revisa o local e valida recursos de acessibilidade para garantir informações precisas.</div>
+      </div>
+      <div class="qa">
+        <b>O que é geolocalização premium?</b>
+        <div class="sub">Com planos pagos, seu estabelecimento aparece em mapas interativos com rotas de acesso e integração com mapas.</div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // (front-only) Guardar plano escolhido pra aparecer no dashboard
+    document.querySelectorAll("[data-plan]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const plan = btn.getAttribute("data-plan");
+        localStorage.setItem("vj_parceiro_plano", plan);
+      });
+    });
+  </script>
+</body>
+</html>

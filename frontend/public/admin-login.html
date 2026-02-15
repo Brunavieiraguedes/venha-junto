@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Venha Junto • Admin • Login</title>
+
+  <link rel="stylesheet" href="./css/parceiro-cadastro.css" />
+  <style>
+    body { background:#f6f7fb; }
+    .wrap {
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 24px;
+    }
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background:#fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.10);
+      padding: 22px;
+    }
+    .top {
+      display:flex; align-items:center; gap:12px; margin-bottom: 14px;
+    }
+    .icon {
+      width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+      border-radius: 12px; background:#111827; color:#fff; font-size:20px;
+    }
+    .title { margin:0; font-size:18px; }
+    .sub { margin:0; color:#555; font-size:13px; }
+
+    .field { margin-top: 12px; display:flex; flex-direction:column; gap:6px; }
+    label { font-size: 13px; color:#333; }
+    input {
+      padding: 12px 12px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      outline: none;
+      font-size: 14px;
+    }
+    input:focus { border-color:#111827; }
+
+    .actions {
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .btn {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #111827;
+      background:#111827;
+      color:#fff;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn:disabled { opacity:.7; cursor:not-allowed; }
+    .link {
+      color:#111827; text-decoration:none; font-size:13px;
+    }
+    .toast {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background:#111827;
+      color:#fff;
+      font-size: 13px;
+    }
+    .toast[hidden]{ display:none; }
+    .hint { margin-top: 10px; font-size: 12px; color:#666; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div class="icon">🛡️</div>
+        <div>
+          <h1 class="title">Login do Admin</h1>
+          <p class="sub">Acesse a área administrativa para validar estabelecimentos.</p>
+        </div>
+      </div>
+
+      <form id="formAdminLogin" novalidate>
+        <div class="field">
+          <label for="email">E-mail *</label>
+          <input id="email" name="email" type="email" placeholder="admin@venhajunto.com" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Senha *</label>
+          <input id="password" name="password" type="password" placeholder="••••••••" required />
+        </div>
+
+        <div class="actions">
+          <button id="btnLogin" class="btn" type="submit">Entrar</button>
+          <a class="link" href="./index.html">Voltar ao site</a>
+        </div>
+
+        <div id="toast" class="toast" hidden></div>
+        <div class="hint">Dica: o login deve setar cookie HTTPOnly <code>vj_access_token</code>.</div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./js/admin-login.js"></script>
+   <script src="./js/vlibras.js" defer></script>
+</body>
+</html>

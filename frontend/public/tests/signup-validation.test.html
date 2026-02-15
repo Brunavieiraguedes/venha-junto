@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Unit Tests - Signup</title>
+</head>
+<body>
+
+<h1>Unit Tests - Signup</h1>
+<button onclick="runTests()">▶ Rodar testes</button>
+
+<pre id="output"></pre>
+
+<script src="../js/tests/signup-validation.js"></script>
+
+<script>
+function log(msg) {
+  document.getElementById("output").textContent += msg + "\n";
+}
+
+function test(name, fn) {
+  try {
+    fn();
+    log("✅ " + name);
+  } catch (e) {
+    log("❌ " + name + " → " + e.message);
+  }
+}
+
+function expect(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function runTests() {
+  document.getElementById("output").textContent = "";
+
+  if (!window.SignupValidation) {
+    log("❌ SignupValidation NÃO carregou");
+    return;
+  }
+
+  const validate = SignupValidation.validateSignupForm;
+
+  test("Senha menor que 5", () => {
+    const r = validate({
+      nome: "Bruna Vieira",
+      email: "bruna@email.com",
+      senha: "1234",
+      confirmar: "1234",
+      aceite: true
+    });
+    expect(!r.ok, "Deveria falhar");
+  });
+
+  test("Senha válida", () => {
+    const r = validate({
+      nome: "Bruna Vieira",
+      email: "bruna@email.com",
+      senha: "12345",
+      confirmar: "12345",
+      aceite: true
+    });
+    expect(r.ok, "Deveria passar");
+  });
+
+  test("Senhas diferentes", () => {
+    const r = validate({
+      nome: "Bruna Vieira",
+      email: "bruna@email.com",
+      senha: "12345",
+      confirmar: "99999",
+      aceite: true
+    });
+    expect(!r.ok, "Deveria falhar");
+  });
+
+  test("Sem aceite", () => {
+    const r = validate({
+      nome: "Bruna Vieira",
+      email: "bruna@email.com",
+      senha: "12345",
+      confirmar: "12345",
+      aceite: false
+    });
+    expect(!r.ok, "Deveria falhar");
+  });
+
+  test("Nome inválido", () => {
+    const r = validate({
+      nome: "Br",
+      email: "bruna@email.com",
+      senha: "12345",
+      confirmar: "12345",
+      aceite: true
+    });
+    expect(!r.ok, "Deveria falhar");
+  });
+
+  test("Email inválido", () => {
+    const r = validate({
+      nome: "Bruna Vieira",
+      email: "brunaemail.com",
+      senha: "12345",
+      confirmar: "12345",
+      aceite: true
+    });
+    expect(!r.ok, "Deveria falhar");
+  });
+}
+</script>
+
+</body>
+</html>

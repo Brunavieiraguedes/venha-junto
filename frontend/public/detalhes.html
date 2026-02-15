@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalhes do Local • Venha Junto</title>
+  <link rel="stylesheet" href="./css/global.css"/>
+  <link rel="stylesheet" href="./css/home.css"/>
+</head>
+<body data-auth="required">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="mobile-topbar" role="banner">
+    <button id="btnMenu" class="btn btn--ghost" aria-controls="sidebar" aria-expanded="false">☰ Menu</button>
+    <div class="title">Detalhes</div>
+    <a class="btn btn--ghost" href="../admin/login.html">Sou parceiro</a>
+  </header>
+
+  <div class="page">
+    <aside id="sidebar" class="sidebar" data-open="false" aria-label="Navegação principal">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">📍</div>
+        <div>
+          <strong>Venha Junto</strong>
+          <span>Turismo Acessível em São Paulo</span>
+        </div>
+      </div>
+
+      <p class="nav-title">Área pública</p>
+      <nav class="menu">
+        <a href="./index.html">Início</a>
+        <a href="./explorar.html">Explorar Locais</a>
+        <a href="./favoritos.html">Meus Favoritos</a>
+        <a href="../admin/login.html">Sou parceiro</a>
+      </nav>
+
+      <div class="userbox">
+        <div class="avatar" aria-hidden="true">👤</div>
+        <div>
+          <strong style="display:block">Usuário</strong>
+          <small>visitante@venhajunto.com</small>
+        </div>
+      </div>
+    </aside>
+
+    <main id="conteudo" class="main" role="main">
+      <section class="section">
+        <div class="container">
+          <h2 id="titulo">Detalhes do Local</h2>
+          <p class="lead" id="sub">Informações do local selecionado.</p>
+
+          <div class="card" style="padding:18px">
+            <div id="conteudoDetalhes"></div>
+
+            <hr class="sep"/>
+
+            <h3 id="acessibilidade">Acessibilidade (WCAG e boas práticas)</h3>
+            <p style="color:var(--muted); font-weight:700">
+              Esta página foi feita com HTML semântico, foco visível, contraste e suporte a navegação por teclado.
+            </p>
+            <ul>
+              <li>Campos com <code>label</code> e nomes acessíveis</li>
+              <li>Regiões com <code>main</code>, <code>nav</code>, <code>header</code>, <code>footer</code></li>
+              <li>Atalhos de “pular para conteúdo”</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn btn--ghost" href="./explorar.html">Voltar</a>
+            <button id="btnFav" class="btn" type="button">⭐ Favoritar</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">© Venha Junto</footer>
+    </main>
+  </div>
+
+  <!-- ✅ ESSENCIAIS PARA FORÇAR LOGIN -->
+  <script src="./js/api.js"></script>
+  <script src="./js/page-guard.js" defer></script>
+
+  <!-- Script da página -->
+  <script src="./js/detalhes.js" defer></script>
+   <script src="./js/vlibras.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard do Parceiro • Venha Junto</title>
+
+    <style>
+      :root{
+        --bg:#f3f6fb;
+        --card:#fff;
+        --text:#0f172a;
+        --muted:#64748b;
+        --primary:#2563eb;
+        --shadow: 0 14px 40px rgba(15,23,42,.10);
+        --radius: 18px;
+      }
+      *{box-sizing:border-box}
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: radial-gradient(900px 500px at 60% 0%, rgba(37,99,235,.08), transparent 60%),
+                    radial-gradient(900px 500px at 30% 30%, rgba(124,58,237,.08), transparent 60%),
+                    var(--bg);
+        min-height:100vh;
+      }
+      .top{
+        display:flex;
+        justify-content:flex-end;
+        gap:10px;
+        padding:14px 18px;
+      }
+      .top a, .top button{
+        background:#fff;
+        border:1px solid rgba(15,23,42,.12);
+        padding:10px 14px;
+        border-radius:999px;
+        font-weight:900;
+        color:var(--text);
+        cursor:pointer;
+        text-decoration:none;
+      }
+      .wrap{
+        display:grid;
+        grid-template-columns: 280px 1fr;
+        gap:16px;
+        padding:0 18px 18px;
+      }
+      @media (max-width: 980px){
+        .wrap{grid-template-columns:1fr}
+      }
+      .side, .card{
+        background:var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border:1px solid rgba(15,23,42,.08);
+      }
+      .side{padding:16px}
+      .brand{display:flex; gap:10px; align-items:center}
+      .logo{
+        width:44px; height:44px; border-radius:14px;
+        display:grid; place-items:center;
+        background: rgba(37,99,235,.12);
+        font-weight:1000; color:var(--primary);
+      }
+      .brand strong{display:block; color:var(--text)}
+      .brand span{display:block; color:var(--muted); font-weight:700; font-size:12px}
+      .menu{margin-top:14px; display:grid; gap:8px}
+      .menu a{
+        text-decoration:none;
+        color:var(--text);
+        font-weight:850;
+        padding:10px 12px;
+        border-radius: 12px;
+        border:1px solid rgba(15,23,42,.10);
+      }
+      .menu a.active{background: rgba(37,99,235,.10); border-color: rgba(37,99,235,.25)}
+      .userbox{
+        margin-top:14px;
+        border:1px solid rgba(15,23,42,.10);
+        border-radius: 14px;
+        padding:12px;
+      }
+      .userbox small{color:var(--muted); font-weight:800}
+      .main{display:grid; gap:14px}
+      .hero{
+        border-radius: 22px;
+        padding:22px;
+        color:#fff;
+        background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+        box-shadow: var(--shadow);
+      }
+      .hero h1{margin:0; font-size:42px}
+      .hero p{margin:6px 0 0; font-weight:800; opacity:.92}
+      .pill{
+        margin-top:12px;
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+        padding:10px 14px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.12);
+        border:1px solid rgba(255,255,255,.18);
+        font-weight:900;
+        width:fit-content;
+      }
+      .cards{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap:12px;
+      }
+      @media (max-width: 980px){
+        .cards{grid-template-columns:1fr}
+      }
+      .mini{
+        padding:16px;
+        border-radius: 18px;
+        border:1px solid rgba(15,23,42,.08);
+        background:#fff;
+        box-shadow: var(--shadow);
+      }
+      .mini h3{margin:0; color:var(--text)}
+      .mini p{margin:6px 0 0; color:var(--muted); font-weight:750}
+      .mini .btn{
+        margin-top:12px;
+        display:inline-flex;
+        text-decoration:none;
+        font-weight:900;
+        padding:10px 14px;
+        border-radius: 14px;
+        background: var(--primary);
+        color:#fff;
+      }
+      .block{
+        padding:16px;
+        border-radius: 18px;
+        border:1px solid rgba(15,23,42,.08);
+        background:#fff;
+        box-shadow: var(--shadow);
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:10px;
+      }
+      .block strong{color:var(--text)}
+      .block span{color:var(--muted); font-weight:800}
+      .block a{
+        text-decoration:none;
+        font-weight:900;
+        padding:10px 14px;
+        border-radius: 14px;
+        background: var(--primary);
+        color:#fff;
+        white-space:nowrap;
+      }
+    </style>
+  </head>
+
+  <body data-protect="admin">
+    <div class="top">
+      <a href="./index.html">Voltar ao site</a>
+      <button type="button" data-logout>Sair</button>
+    </div>
+
+    <div class="wrap">
+      <aside class="side">
+        <div class="brand">
+          <div class="logo">VJ</div>
+          <div>
+            <strong>Venha Junto</strong>
+            <span>Turismo Acessível em São Paulo</span>
+          </div>
+        </div>
+
+        <p style="margin:14px 0 8px; color:#64748b; font-weight:900">ÁREA ADMINISTRATIVA</p>
+
+        <nav class="menu" aria-label="Menu administrativo">
+          <a class="active" href="./parceiro-dashboard.html">Início</a>
+
+          <!-- Você vai criar depois estas páginas:
+               parceiro-dashboard-metricas.html
+               parceiro-estabelecimentos.html
+               parceiro-plano.html
+          -->
+          <a href="./parceiro-dashboard-metricas.html">Dashboard</a>
+          <a href="./parceiro-estabelecimentos.html">Meus Estabelecimentos</a>
+          <a href="./parceiro-plano.html">Meu Plano</a>
+        </nav>
+
+        <div class="userbox">
+          <strong style="display:block">Usuário</strong>
+          <small data-user-email>parceiro@venhajunto.com</small>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="hero">
+          <h1>Olá, <span style="color:#22d3ee">Parceiro!</span></h1>
+          <p>Gerencie seus estabelecimentos e alcance milhares de turistas</p>
+          <div class="pill">⭐ Plano Básico</div>
+        </section>
+
+        <section class="cards">
+          <div class="mini">
+            <h3>Dashboard</h3>
+            <p>Acompanhe métricas e desempenho dos seus locais</p>
+            <a class="btn" href="./parceiro-dashboard-metricas.html">Abrir</a>
+          </div>
+          <div class="mini">
+            <h3>Meus Estabelecimentos</h3>
+            <p>Gerencie seus locais cadastrados</p>
+            <a class="btn" href="./parceiro-estabelecimentos.html">Abrir</a>
+          </div>
+          <div class="mini">
+            <h3>Meu Plano</h3>
+            <p>Gerencie sua assinatura e benefícios</p>
+            <a class="btn" href="./parceiro-plano.html">Abrir</a>
+          </div>
+        </section>
+
+        <section class="block">
+          <div>
+            <strong>Seus Estabelecimentos</strong><br />
+            <span>Você pode cadastrar e editar seus locais por aqui.</span>
+          </div>
+          <a href="./parceiro-estabelecimentos.html">Ver locais</a>
+        </section>
+
+        <section class="block" style="background: linear-gradient(135deg, #7c3aed, #2563eb); color:#fff; border:none">
+          <div>
+            <strong style="color:#fff">Aumente sua visibilidade!</strong><br />
+            <span style="color:rgba(255,255,255,.92)">Faça upgrade para planos PRO e alcance ainda mais clientes.</span>
+          </div>
+          <a style="background:#fff; color:#0f172a" href="./parceiro-plano.html">Ver Planos</a>
+        </section>
+      </main>
+    </div>
+
+    <script src="./js/parceiro-flow.js" defer></script>
+     <script src="./js/vlibras.js" defer></script>
+  </body>
+</html>

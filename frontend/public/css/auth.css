@@ -1,0 +1,344 @@
+:root{
+  --bg1:#1d4ed8;
+  --bg2:#6d28d9;
+  --card:#ffffff;
+  --muted:#64748b;
+  --text:#0f172a;
+  --line:rgba(15,23,42,.10);
+  --field:#f8fafc;
+  --blue:#2563eb;
+  --green:#22c55e;
+  --shadow:0 30px 90px rgba(0,0,0,.28);
+  --radius:18px;
+  --radius2:14px;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--text);
+  background:
+    radial-gradient(900px 520px at 20% 12%, rgba(255,255,255,.16), transparent 60%),
+    radial-gradient(700px 420px at 80% 10%, rgba(34,197,94,.12), transparent 55%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+}
+
+a{color:inherit}
+
+.vj-auth{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+.vj-top{
+  max-width:1020px;
+  width:100%;
+  margin:0 auto;
+  padding:26px 18px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+.vj-top a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  font-weight:800;
+  color:rgba(255,255,255,.92);
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.vj-top a:hover{
+  transform: translateY(-1px);
+  background:rgba(255,255,255,.14);
+  border-color: rgba(255,255,255,.22);
+}
+
+.vj-hero{
+  text-align:center;
+  padding:10px 18px 18px;
+  color:#fff;
+}
+
+.vj-hero h1{
+  margin:0;
+  font-size:32px;
+  line-height:1.1;
+  letter-spacing:-.7px;
+  font-weight:900;
+}
+.vj-hero h1 .accent{color:#22c55e}
+.vj-hero p{
+  margin:8px 0 0;
+  opacity:.92;
+  font-weight:600;
+  font-size:13.5px;
+}
+
+.vj-center{
+  flex:1;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:16px 18px 30px;
+}
+
+.vj-card{
+  width:min(420px, 96vw);
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:22px;
+  box-shadow:
+    0 22px 65px rgba(0,0,0,.22),
+    0 2px 10px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+
+.vj-card__inner{
+  padding:20px 20px 18px;
+}
+
+.vj-tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  background:rgba(15,23,42,.04);
+  border:1px solid var(--line);
+  padding:6px;
+  border-radius:16px;
+}
+
+.vj-tab{
+  text-align:center;
+  text-decoration:none;
+  font-weight:900;
+  font-size:13px;
+  padding:11px 10px;
+  border-radius:14px;
+  color:rgba(15,23,42,.65);
+  transition: background .15s ease, color .15s ease;
+}
+
+.vj-tab[aria-current="page"]{
+  background:var(--blue);
+  color:#fff;
+  box-shadow: 0 14px 26px rgba(37,99,235,.25);
+}
+
+.vj-title{
+  margin:16px 0 4px;
+  font-size:20px;
+  font-weight:1000;
+  letter-spacing:-.4px;
+}
+.vj-sub{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-weight:700;
+  font-size:12px;
+}
+
+.vj-form{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.vj-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+@media (max-width:520px){
+  .vj-row{grid-template-columns:1fr}
+}
+
+.vj-field label{
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  color:rgba(15,23,42,.78);
+  margin-bottom:7px;
+}
+
+.vj-input{
+  position:relative;
+}
+
+.vj-input input, .vj-input select{
+  width:100%;
+  height:48px;
+  border-radius:14px;
+  border:1px solid rgba(15,23,42,.10);
+  background:var(--field);
+  padding-left:44px;
+  padding-right:54px; /* ✅ espaço garantido pro olhinho */
+  font-weight:800;
+  outline:none;
+  color:var(--text);
+  transition: box-shadow .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.vj-input input::placeholder{
+  color:rgba(15,23,42,.42);
+  font-weight:800
+}
+
+.vj-input input:focus, .vj-input select:focus{
+  border-color:rgba(37,99,235,.65);
+  box-shadow:0 0 0 4px rgba(37,99,235,.14);
+  background:#fff;
+}
+
+.vj-ico{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  width:18px;
+  height:18px;
+  opacity:.70;
+}
+
+.vj-eye{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  opacity:.80;
+}
+.vj-eye:hover{background:rgba(2,6,23,.06)}
+.vj-eye span{font-size:14px; line-height:1; font-weight:1000}
+
+.vj-check{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-top:2px;
+  font-weight:800;
+  font-size:12px;
+  color:rgba(15,23,42,.78);
+  line-height:1.35;
+  cursor:pointer;
+}
+.vj-check input{
+  margin-top:2px;
+  width:16px;
+  height:16px;
+}
+
+.vj-check a{
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:1000;
+}
+.vj-check a:hover{text-decoration:underline}
+
+.vj-actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:6px;
+}
+
+.vj-btn{
+  height:48px;
+  border-radius:14px;
+  border:0;
+  font-weight:1000;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.vj-btn--primary{
+  background:var(--blue);
+  color:#fff;
+}
+.vj-btn--primary:hover{filter:brightness(1.05)}
+
+.vj-btn--green{
+  background:var(--green);
+  color:#fff;
+  box-shadow:0 16px 28px rgba(34,197,94,.25);
+  transition: transform .12s ease, filter .12s ease;
+}
+.vj-btn--green:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+.vj-btn--green:active{transform:translateY(0px)}
+
+.vj-link-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:6px;
+  font-size:12px;
+  font-weight:900;
+  color:rgba(15,23,42,.72);
+}
+.vj-link-row a{
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:1000;
+}
+.vj-link-row a:hover{text-decoration:underline}
+
+/* Erros mais profissionais */
+.vj-error{
+  color: rgba(220,38,38,.95);
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 6px;
+  display: block;
+}
+
+/* Se seu JS usa esta classe (mantive!) */
+.vj-input-error{
+  border-color: rgba(220,38,38,.65) !important;
+  box-shadow: 0 0 0 4px rgba(220,38,38,.12) !important;
+  background: #fff !important;
+}
+
+/* Se seu JS usa estas também (mantive!) */
+.vj-input--error input{
+  border: 1px solid rgba(220,38,38,.60) !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 4px rgba(220,38,38,.10);
+}
+.vj-input--ok input{
+  border: 1px solid rgba(22,163,74,.60) !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 4px rgba(22,163,74,.10);
+}
+
+/* Foco visível (acessibilidade) */
+.vj-tab:focus-visible,
+.vj-btn:focus-visible,
+.vj-eye:focus-visible,
+.vj-top a:focus-visible,
+.vj-input input:focus-visible{
+  outline: 3px solid rgba(37,99,235,.35);
+  outline-offset: 2px;
+}

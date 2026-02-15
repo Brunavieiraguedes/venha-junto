@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VenhaJunto • Parceiro</title>
+
+  <style>
+    :root{
+      --bg1:#0b2e7a;
+      --bg2:#6d28d9;
+
+      --card:#f6f3ff;
+      --cardBorder: rgba(255,255,255,.22);
+      --shadow: 0 28px 80px rgba(0,0,0,.28);
+
+      --primary:#7c3aed;
+      --primaryHover:#6d28d9;
+
+      --text:#0f172a;
+      --muted:#475569;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      color: var(--text);
+    }
+
+    /* Topbar simples (sem sidebar) */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 18px 22px;
+      color:#fff;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+
+    .brandDot{
+      width:12px; height:12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.15);
+    }
+
+    .topbar a{
+      color:#fff;
+      text-decoration:none;
+      font-weight: 800;
+      opacity:.95;
+    }
+    .topbar a:hover{ opacity:1; text-decoration: underline; }
+
+    .topLinks{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    /* Conteúdo central */
+    .main{
+      min-height: calc(100vh - 64px);
+      display:grid;
+      place-items:center;
+      padding: 22px;
+    }
+
+    .card{
+      width: min(860px, 92vw);
+      background: var(--card);
+      border: 1px solid var(--cardBorder);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 40px 28px 30px;
+      text-align:center;
+    }
+
+    .iconBox{
+      width:56px; height:56px;
+      border-radius: 16px;
+      display:grid; place-items:center;
+      background: var(--primary);
+      color:#fff;
+      margin: 0 auto 16px;
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(124,58,237,.35);
+    }
+
+    h1{
+      margin:0 0 8px;
+      color: var(--text);
+      font-size: 34px;
+      font-weight: 1000;
+      letter-spacing: -0.03em;
+    }
+
+    .sub{
+      margin: 0 auto 22px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 15px;
+      max-width: 620px;
+      line-height: 1.5;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin: 22px 0 22px;
+    }
+
+    .feature{
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(148,163,184,.25);
+      border-radius: 14px;
+      padding: 16px 14px;
+      text-align:center;
+    }
+
+    .check{
+      width:38px; height:38px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      background: rgba(124,58,237,.16);
+      color: var(--primary);
+      font-weight: 1000;
+      margin: 0 auto 10px;
+      font-size: 16px;
+    }
+
+    .feature strong{
+      display:block;
+      color: var(--text);
+      font-weight: 1000;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .feature p{
+      margin:0;
+      color:#64748b;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 22px;
+      min-width: 260px;
+      border-radius: 999px;
+      background: var(--primary);
+      color:#fff;
+      text-decoration:none;
+      font-weight: 1000;
+      border:0;
+      cursor:pointer;
+      box-shadow: 0 16px 40px rgba(124,58,237,.35);
+    }
+    .btn:hover{ background: var(--primaryHover); }
+
+    .hint{
+      margin-top: 12px;
+      color:#64748b;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .partnerLine{
+      margin-top: 10px;
+      color:#0f172a;
+      font-weight: 900;
+      font-size: 13px;
+      display:none;
+    }
+
+    @media (max-width: 900px){
+      h1{ font-size: 26px; }
+      .features{ grid-template-columns: 1fr; }
+      .card{ padding: 30px 18px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" role="banner" aria-label="Topo do parceiro">
+    <div class="brand" aria-label="Marca VenhaJunto">
+      <span class="brandDot" aria-hidden="true"></span>
+      <span>VenhaJunto</span>
+    </div>
+
+    <nav class="topLinks" aria-label="Ações">
+      <!-- Entrar deve ir para parceiro-cadastro.html (sua tela de login bonita) -->
+      <a href="./parceiro-cadastro.html">Entrar</a>
+      <a href="./index.html">Voltar ao site</a>
+    </nav>
+  </header>
+
+  <main class="main" role="main">
+    <section class="card" aria-label="Boas-vindas do parceiro">
+      <div class="iconBox" aria-hidden="true">🏢</div>
+
+      <h1>Seja um Parceiro Venha Junto</h1>
+      <p class="sub">
+        Cadastre seu estabelecimento e alcance milhares de pessoas que buscam locais acessíveis em São Paulo.
+      </p>
+
+      <div class="features" aria-label="Benefícios">
+        <div class="feature">
+          <div class="check" aria-hidden="true">✓</div>
+          <strong>Mais visibilidade</strong>
+          <p>Destaque seu negócio na maior plataforma de turismo acessível.</p>
+        </div>
+
+        <div class="feature">
+          <div class="check" aria-hidden="true">✓</div>
+          <strong>Certificação</strong>
+          <p>Selo de acessibilidade com verificação e credibilidade.</p>
+        </div>
+
+        <div class="feature">
+          <div class="check" aria-hidden="true">✓</div>
+          <strong>Analytics</strong>
+          <p>Métricas de visualizações e interesse para decisões melhores.</p>
+        </div>
+      </div>
+
+      <!-- ✅ Botão com lógica: se não tiver conta salva -> vai criar conta -->
+      <button id="btnComecar" class="btn" type="button">
+        Começar Cadastro <span aria-hidden="true">→</span>
+      </button>
+
+      <div class="hint">Processo de cadastro leva cerca de 10 minutos</div>
+
+      <div id="partnerLine" class="partnerLine"></div>
+    </section>
+  </main>
+
+  <script>
+    // Pega conta salva (se existir)
+    const el = document.getElementById("partnerLine");
+    const btn = document.getElementById("btnComecar");
+
+    // Ajuste aqui se seus nomes de storage forem diferentes
+    const raw = localStorage.getItem("vj_partner_account"); // exemplo: {"email":"..."} ou "email@..."
+    let email = "";
+
+    if (raw) {
+      try {
+        const obj = JSON.parse(raw);
+        email = obj?.email || "";
+      } catch (e) {
+        email = raw;
+      }
+    }
+
+    if (email) {
+      el.style.display = "block";
+      el.textContent = "Parceiro: " + email;
+    }
+
+    // ✅ Fluxo correto:
+    // - Se não tiver conta salva: vai para cadastro do parceiro (criar conta)
+    // - Se já tiver conta salva: vai para cadastro do estabelecimento
+    btn.addEventListener("click", () => {
+      if (!email) {
+        window.location.href = "./parceiro-criar-conta.html"; // cadastro do parceiro primeiro
+      } else {
+        window.location.href = "./parceiro-cadastro-estabelecimento.html"; // depois cadastro do lugar
+        
+      }
+    });
+  </script>
+</body>
+</html>

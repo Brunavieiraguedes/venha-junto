@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Venha Junto • Status do Cadastro</title>
+  <link rel="stylesheet" href="./css/parceiro-status.css" />
+</head>
+
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brandIcon">📍</div>
+        <div class="brandTxt">
+          <strong>Venha Junto</strong>
+          <small>Área do Parceiro</small>
+        </div>
+      </div>
+
+      <div class="pill" id="statusPill">Em análise</div>
+
+      <div class="menuTitle">Menu</div>
+      <nav class="menu">
+        <a href="./parceiro-cadastro-estabelecimento.html">Cadastro</a>
+        <a class="active" href="./parceiro-status.html">Status</a>
+      </nav>
+
+      <div class="spacer"></div>
+
+      <div class="user">
+        <div class="userAvatar">🤝</div>
+        <div class="userTxt">
+          <strong>Parceiro</strong>
+          <small id="partnerEmail">parceiro@venhajunto.com</small>
+        </div>
+      </div>
+
+      <a class="btnGhost" href="./parceiro-login.html">Sair</a>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <strong>Status do Cadastro</strong>
+        <a class="toplink" href="./index.html">Voltar ao site</a>
+      </header>
+
+      <section class="statusCard">
+        <div class="icon">🕒</div>
+        <h1 id="title">Cadastro em Análise</h1>
+        <p id="desc">Nossa equipe está analisando seu cadastro. Você receberá um e-mail com o resultado.</p>
+
+        <div class="adminBox">
+          <strong>Visão Admin (simulada para o TCC)</strong>
+          <p>Use os botões abaixo para simular aprovação ou reprovação.</p>
+
+          <div class="adminActions">
+            <button id="btnAprovar" type="button">Aprovar</button>
+            <button id="btnReprovar" type="button" class="danger">Reprovar</button>
+          </div>
+
+          <small>Após aprovar: libera Dashboard + inicia Trial 30 dias.</small>
+        </div>
+
+        <div id="trial" class="trial" hidden>
+          <strong>✅ Aprovado! Trial de 30 dias iniciado.</strong>
+          <p>Você pode continuar no plano Free ou fazer upgrade para Destaque para obter mais visibilidade.</p>
+          <a class="btnPrimary" href="./parceiro-dashboard.html">Ir para Dashboard</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./js/parceiro-status.js"></script>
+   <script src="./js/vlibras.js" defer></script>
+</body>
+</html>

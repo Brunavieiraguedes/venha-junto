@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venha Junto • Turismo Acessível em São Paulo</title>
+
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+
+    <!-- ✅ Estilo do modal (bem discreto e profissional) -->
+    <style>
+      .vj-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        place-items: center;
+        background: rgba(2, 6, 23, 0.55);
+        z-index: 9999;
+        padding: 18px;
+      }
+      .vj-modal[data-open="true"] {
+        display: grid;
+      }
+
+      .vj-modal__card {
+        width: min(520px, 96vw);
+        border-radius: 16px;
+        background: #ffffff;
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .vj-modal__head {
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: linear-gradient(135deg, #eaf1ff, #f3e8ff);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      .vj-modal__brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        color: #0f172a;
+      }
+
+      /* ✅ agora o dot vira “avatar” da logo */
+      .vj-modal__brand .dot {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      .vj-modal__close {
+        border: 0;
+        background: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        font-weight: 900;
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+      }
+
+      .vj-modal__body {
+        padding: 18px;
+      }
+
+      .vj-modal__body h2 {
+        margin: 0 0 8px;
+        color: #0f172a;
+        font-size: 18px;
+        font-weight: 1000;
+      }
+
+      .vj-modal__body p {
+        margin: 0 0 14px;
+        color: #475569;
+        font-weight: 700;
+        line-height: 1.4;
+        font-size: 13px;
+      }
+
+      .vj-modal__actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .vj-modal__actions a {
+        text-decoration: none;
+        font-weight: 900;
+        border-radius: 12px;
+        padding: 12px 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .vj-btn-primary {
+        background: #2563eb;
+        color: #fff;
+        border: 1px solid #2563eb;
+        min-width: 170px;
+      }
+      .vj-btn-primary:hover {
+        filter: brightness(1.04);
+      }
+
+      .vj-btn-ghost {
+        background: #ffffff;
+        color: #0f172a;
+        border: 1px solid rgba(15, 23, 42, 0.16);
+        min-width: 170px;
+      }
+      .vj-btn-ghost:hover {
+        background: rgba(2, 6, 23, 0.03);
+      }
+
+      .vj-modal__fineprint {
+        margin-top: 12px;
+        font-size: 11px;
+        color: #64748b;
+        font-weight: 700;
+      }
+
+      /* ✅ para imagem preencher certinho */
+      .logo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Topbar mobile -->
+    <header class="mobile-topbar" role="banner">
+      <button
+        id="btnMenu"
+        class="btn btn--ghost"
+        aria-controls="sidebar"
+        aria-expanded="false"
+        type="button"
+      >
+        ☰ Menu
+      </button>
+
+      <div class="title">Venha Junto</div>
+
+      <!-- Parceiro começa pela landing -->
+      <a class="btn btn--ghost" href="./parceiro.html">Sou parceiro</a>
+    </header>
+
+    <div class="page">
+      <!-- Sidebar pública -->
+      <aside
+        id="sidebar"
+        class="sidebar"
+        data-open="false"
+        aria-label="Navegação principal"
+      >
+        <div class="brand" aria-label="Marca Venha Junto">
+          <!-- ✅ LOGO COM IMAGEM -->
+          <div class="logo" aria-hidden="true">
+            <img
+              src="../assets/img/logo-acessibilidade.png"
+              alt=""
+              class="logo-img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div>
+            <strong>Venha Junto</strong>
+            <span>Turismo Acessível em São Paulo</span>
+          </div>
+        </div>
+
+        <p class="nav-title">Área pública</p>
+        <nav class="menu" aria-label="Menu público">
+          <a href="./index.html" aria-current="page">Início</a>
+          <a href="./explorar.html">Explorar Locais</a>
+          <a href="./favoritos.html">Meus Favoritos</a>
+          <a href="./parceiro.html">Sou parceiro</a>
+        </nav>
+
+        <!-- ✅ USERBOX (sem localStorage) -->
+        <div
+          id="userBox"
+          class="userbox"
+          aria-label="Usuário atual"
+          style="cursor: pointer"
+        >
+         <div class="avatar" aria-hidden="true">
+  <img id="userAvatarImg" alt="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:999px;">
+  <span id="userAvatarFallback">👤</span>
+</div>
+
+          <div>
+            <strong id="userName" style="display: block">Visitante</strong>
+            <small id="userEmail">visitante@venhajunto.com</small>
+          </div>
+        </div>
+      </aside>
+
+      <main id="conteudo" class="main" role="main">
+        <!-- Hero -->
+        <section class="hero" aria-label="Busca de locais acessíveis">
+          <div class="container">
+            <h1>
+              Olá, <span class="highlight">Viajante!</span><br />
+              Descubra São Paulo
+            </h1>
+            <p>
+              Explore todos os locais acessíveis de São Paulo — 100% gratuito
+              para turistas
+            </p>
+
+            <div class="search-card" role="search" aria-label="Filtros de busca">
+              <div class="search-top">
+                <div>
+                  <strong>Priorizar Locais Acessíveis</strong>
+                  <small>Mostrar primeiro estabelecimentos verificados</small>
+                </div>
+
+                <label class="switch">
+                  <span class="visually-hidden">Ativar prioridade de acessibilidade</span>
+                  <input id="toggleAcessiveis" type="checkbox" />
+                </label>
+              </div>
+
+              <!-- ✅ Filtros -->
+              <div class="filters">
+                <div class="field">
+                  <label for="cidade">Cidade</label>
+                  <select id="cidade">
+                    <option value="">Todas</option>
+                    <option value="São Paulo">São Paulo</option>
+                    <option value="Santo André">Santo André</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="tipoLocal">Tipo de Local</label>
+                  <select id="tipoLocal">
+                    <option value="Todos">Todos</option>
+                    <option value="Hotel">Hotéis</option>
+                    <option value="Restaurante">Restaurantes</option>
+                    <option value="Atracao">Atrações</option>
+                    <option value="Passeio">Passeios</option>
+                  </select>
+                </div>
+
+                <div class="actions">
+                  <button id="btnBuscar" class="btn" type="button">🔎 Buscar Locais</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA parceiro -->
+        <section class="cta" aria-label="Convite para parceiros">
+          <div class="wrap">
+            <h2>🏠 Tenha seu Estabelecimento no Venha Junto</h2>
+            <p>
+              Seja parte da plataforma de turismo acessível de São Paulo.
+              Cadastre seu local e alcance pessoas que valorizam a inclusão.
+            </p>
+
+            <div class="cta-actions">
+              <a class="btn" href="./parceiro.html">Torne-se um Anfitrião</a>
+              <a class="btn btn--ghost" href="./parceiro.html">Ver Planos para Negócios</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Locais -->
+        <section class="section" aria-label="Lista de locais">
+          <div class="container">
+            <h2>Todos os Locais Acessíveis</h2>
+            <p class="lead">
+              Descubra estabelecimentos acessíveis com informações detalhadas
+              sobre recursos e horários.
+            </p>
+
+            <div id="listaLocais" class="grid" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <span>© Venha Junto • Turismo Acessível em São Paulo</span>
+            <span style="display: flex; gap: 14px; align-items: center">
+              <a href="./termos.html">Termos de Uso</a>
+              <a href="./privacidade.html">Política de Privacidade</a>
+            </span>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- ✅ MODAL (SEM localStorage) -->
+    <div
+      id="vjAuthModal"
+      class="vj-modal"
+      data-open="false"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="vjAuthTitle"
+    >
+      <div class="vj-modal__card">
+        <div class="vj-modal__head">
+          <div class="vj-modal__brand">
+            <!-- ✅ LOGO NO MODAL -->
+            <span class="dot" aria-hidden="true">
+              <img
+                src="../assets/img/logo-acessibilidade.png"
+                alt=""
+                class="logo-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </span>
+            <span>Venha Junto</span>
+          </div>
+
+          <button
+            id="vjAuthClose"
+            class="vj-modal__close"
+            type="button"
+            aria-label="Fechar"
+            title="Fechar"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="vj-modal__body">
+          <h2 id="vjAuthTitle">Para ver os detalhes, faça login</h2>
+          <p>
+            Para acessar informações completas do local (detalhes, acessibilidade
+            e contato), precisamos que você entre ou crie uma conta.
+          </p>
+
+          <div class="vj-modal__actions">
+            <a id="vjGoLogin" class="vj-btn-primary" href="./usuario-login.html">Entrar</a>
+            <a id="vjGoSignup" class="vj-btn-ghost" href="./usuario-criar-conta.html">Criar conta</a>
+          </div>
+
+          <div class="vj-modal__fineprint">
+            * O Venha Junto não realiza reservas e não intermedia pagamentos.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Helpers globais: abre modal e coloca returnUrl NO LINK (sem localStorage) -->
+    <script>
+      (function () {
+        const modal = document.getElementById("vjAuthModal");
+        const btnClose = document.getElementById("vjAuthClose");
+        const aLogin = document.getElementById("vjGoLogin");
+        const aSignup = document.getElementById("vjGoSignup");
+
+        function openAuthModal(returnUrl) {
+          if (!modal) return;
+
+          const baseLogin = "./usuario-login.html";
+          const baseSignup = "./usuario-criar-conta.html";
+
+          if (returnUrl) {
+            const q = `?returnUrl=${encodeURIComponent(returnUrl)}`;
+            if (aLogin) aLogin.href = baseLogin + q;
+            if (aSignup) aSignup.href = baseSignup + q;
+          } else {
+            if (aLogin) aLogin.href = baseLogin;
+            if (aSignup) aSignup.href = baseSignup;
+          }
+
+          modal.setAttribute("data-open", "true");
+          if (btnClose) btnClose.focus();
+        }
+
+        function closeAuthModal() {
+          if (!modal) return;
+          modal.setAttribute("data-open", "false");
+        }
+
+        window.VJ_openAuthModal = openAuthModal;
+        window.VJ_closeAuthModal = closeAuthModal;
+
+        if (btnClose) btnClose.addEventListener("click", closeAuthModal);
+
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) closeAuthModal();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          const isOpen = modal.getAttribute("data-open") === "true";
+          if (isOpen && e.key === "Escape") closeAuthModal();
+        });
+      })();
+    </script>
+
+    <!-- ✅ Scripts da Home (sem mock / sem localStorage) -->
+    <script src="./js/api.js" defer></script>
+    <script src="./js/userbox.js" defer></script>
+    <script src="./js/page-guard.js" defer></script>
+    <script src="./js/home.js" defer></script>
+
+    <!-- ✅ VLibras (plugin oficial gov.br) -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+
+<!-- =========================
+     Venha Junto • Chat Widget
+     ========================= -->
+
+<button id="vj-fab" aria-label="Abrir assistente" type="button">
+  <!-- ícone robô simples -->
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 2a1 1 0 0 1 1 1v1.05A7.002 7.002 0 0 1 19 11v6a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-6a7.002 7.002 0 0 1 6-6.95V3a1 1 0 0 1 1-1Zm4 9H8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1Zm-6 2a1 1 0 1 1 0 2a1 1 0 0 1 0-2Zm4 0a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"/>
+  </svg>
+</button>
+
+<section id="vj-chat" aria-label="Assistente Venha Junto" aria-hidden="true">
+  <header class="vj-header">
+    <div class="vj-avatar" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2a1 1 0 0 1 1 1v1.05A7.002 7.002 0 0 1 19 11v6a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-6a7.002 7.002 0 0 1 6-6.95V3a1 1 0 0 1 1-1Zm4 9H8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1Zm-6 2a1 1 0 1 1 0 2a1 1 0 0 1 0-2Zm4 0a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"/>
+      </svg>
+    </div>
+
+    <div class="vj-headtext">
+      <div class="vj-title">Assistente Venha Junto</div>
+      <div class="vj-status"><span class="vj-dot"></span> Online agora</div>
+    </div>
+
+    <button id="vj-close" class="vj-close" aria-label="Fechar chat" type="button">✕</button>
+  </header>
+
+  <div id="vj-body" class="vj-body" role="log" aria-live="polite"></div>
+
+  <div class="vj-inputbar">
+    <input id="vj-input" type="text" placeholder="Pergunte sobre lugares acessíveis..." autocomplete="off" />
+    <button id="vj-send" type="button" aria-label="Enviar">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 11.2l17.5-7.4c.7-.3 1.5.4 1.2 1.2L14.3 22c-.2.6-1 .8-1.5.4l-4-3.2-2.8 1.5c-.6.3-1.3-.1-1.3-.8v-4.1l10-9.2-12 6.6c-.9.5-1.9-.3-1.7-1.3Z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="vj-powered">Powered by Ollama • Venha Junto Inclusão</div>
+</section>
+
+<style>
+  /* FAB */
+  #vj-fab{
+    position:fixed; right:22px; bottom:22px;
+    width:64px; height:64px; border-radius:999px;
+    border:none; cursor:pointer;
+    background:#1f5eff;
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+    display:grid; place-items:center;
+    z-index:999999;
+  }
+  #vj-fab svg{ width:28px; height:28px; fill:#fff; }
+
+  /* Chat box */
+  #vj-chat{
+    position:fixed; right:22px; bottom:98px;
+    width:360px; max-width:92vw;
+    height:520px; max-height:78vh;
+    background:#f8fafc;
+    border-radius:18px;
+    box-shadow:0 18px 44px rgba(0,0,0,.25);
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+    z-index:999999;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  }
+
+  /* Header */
+  .vj-header{
+    background:#1f5eff;
+    color:#fff;
+    padding:14px 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .vj-avatar{
+    width:40px; height:40px;
+    border-radius:999px;
+    background:rgba(255,255,255,.18);
+    display:grid; place-items:center;
+  }
+  .vj-avatar svg{ width:20px; height:20px; fill:#fff; }
+  .vj-headtext{ flex:1; min-width:0; }
+  .vj-title{ font-weight:800; font-size:14px; line-height:1.1; }
+  .vj-status{ font-size:12px; opacity:.95; display:flex; align-items:center; gap:6px; margin-top:2px; }
+  .vj-dot{ width:8px; height:8px; border-radius:999px; background:#22c55e; display:inline-block; }
+
+  .vj-close{
+    background:transparent; border:none; color:#fff;
+    font-size:18px; cursor:pointer;
+    width:34px; height:34px; border-radius:10px;
+  }
+  .vj-close:hover{ background:rgba(255,255,255,.12); }
+
+  /* Body */
+  .vj-body{
+    flex:1;
+    padding:14px;
+    overflow:auto;
+  }
+
+  /* Message bubbles */
+  .vj-row{ display:flex; margin:10px 0; }
+  .vj-row.me{ justify-content:flex-end; }
+  .vj-bubble{
+    max-width:78%;
+    background:#fff;
+    border:1px solid rgba(15,23,42,.10);
+    border-radius:14px;
+    padding:10px 12px;
+    color:#0f172a;
+    font-size:13px;
+    line-height:1.35;
+  }
+  .vj-row.me .vj-bubble{
+    background:#e0f2fe;
+  }
+  .vj-time{
+    font-size:11px;
+    color:rgba(15,23,42,.55);
+    margin-top:6px;
+  }
+
+  /* Input bar */
+  .vj-inputbar{
+    padding:10px 12px;
+    background:#fff;
+    border-top:1px solid rgba(15,23,42,.08);
+    display:flex; gap:10px; align-items:center;
+  }
+  .vj-inputbar input{
+    flex:1;
+    height:42px;
+    border-radius:999px;
+    border:1px solid rgba(15,23,42,.14);
+    padding:0 14px;
+    outline:none;
+    background:#f1f5f9;
+  }
+  .vj-inputbar button{
+    width:42px; height:42px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    background:#e2e8f0;
+    display:grid; place-items:center;
+  }
+  .vj-inputbar button svg{ width:18px; height:18px; fill:#334155; }
+
+  /* Footer */
+  .vj-powered{
+    text-align:center;
+    padding:8px 10px 10px;
+    font-size:11px;
+    color:rgba(15,23,42,.55);
+    background:#fff;
+    border-top:1px solid rgba(15,23,42,.08);
+  }
+</style>
+
+<script>
+  const vjFab   = document.getElementById("vj-fab");
+  const vjChat  = document.getElementById("vj-chat");
+  const vjClose = document.getElementById("vj-close");
+  const vjBody  = document.getElementById("vj-body");
+  const vjInput = document.getElementById("vj-input");
+  const vjSend  = document.getElementById("vj-send");
+
+  const API_URL = "http://127.0.0.1:8000/chat"; // seu FastAPI
+
+  function nowHHMM(){
+    const d = new Date();
+    const hh = String(d.getHours()).padStart(2,"0");
+    const mm = String(d.getMinutes()).padStart(2,"0");
+    return `${hh}:${mm}`;
+  }
+
+  function addMsg(text, who="bot"){
+    const row = document.createElement("div");
+    row.className = "vj-row " + (who === "me" ? "me" : "bot");
+
+    const bubble = document.createElement("div");
+    bubble.className = "vj-bubble";
+    bubble.textContent = text;
+
+    const time = document.createElement("div");
+    time.className = "vj-time";
+    time.textContent = nowHHMM();
+
+    bubble.appendChild(time);
+    row.appendChild(bubble);
+    vjBody.appendChild(row);
+    vjBody.scrollTop = vjBody.scrollHeight;
+  }
+
+  function openChat(){
+    vjChat.style.display = "flex";
+    vjChat.setAttribute("aria-hidden","false");
+    vjInput.focus();
+
+    if (!vjBody.dataset.welcome){
+      addMsg("Olá! Sou a assistente do Venha Junto. Como posso ajudar você a explorar São Paulo hoje? Posso sugerir museus, restaurantes ou parques com acessibilidade.");
+      vjBody.dataset.welcome = "1";
+    }
+  }
+
+  function closeChat(){
+    vjChat.style.display = "none";
+    vjChat.setAttribute("aria-hidden","true");
+  }
+
+  async function sendMessage(){
+    const text = vjInput.value.trim();
+    if(!text) return;
+
+    addMsg(text, "me");
+    vjInput.value = "";
+    addMsg("Digitando...", "bot");
+
+    try{
+      const res = await fetch(API_URL, {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      // remove "Digitando..."
+      vjBody.lastChild.remove();
+
+      const data = await res.json();
+      addMsg(data.answer || "Não consegui responder agora.");
+
+      // Se você quiser, depois a gente renderiza cards de places aqui
+    }catch(e){
+      vjBody.lastChild.remove();
+      addMsg("Ops! Não consegui conectar ao servidor do chat. Verifique se o backend está rodando.");
+    }
+  }
+
+  vjFab.addEventListener("click", openChat);
+  vjClose.addEventListener("click", closeChat);
+
+  vjSend.addEventListener("click", sendMessage);
+  vjInput.addEventListener("keydown", (e)=>{
+    if(e.key === "Enter") sendMessage();
+    if(e.key === "Escape") closeChat();
+  });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venha Junto • Detalhes do Local</title>
+
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/local-detalhes.css" />
+  </head>
+
+  <body>
+    <main class="vj-page">
+      <header class="vj-top">
+       <a class="vj-back" href="#" id="btnVoltar">← Voltar</a>
+
+        <span id="vjStatus" class="vj-status">Publicado</span>
+      </header>
+
+      <section class="vj-hero">
+        <div class="vj-hero__img" id="imgWrap">
+          <div class="vj-hero__imgEmpty">Sem imagem</div>
+        </div>
+
+        <aside class="vj-hero__card">
+          <h1 id="nome">Carregando...</h1>
+
+          <div class="vj-meta" id="meta"></div>
+
+          <div class="vj-row">
+            <span id="verifiedBadge" class="vj-pill vj-pill--ok" style="display:none;">
+              Acessível verificado
+            </span>
+            <span id="tipoBadge" class="vj-pill vj-pill--soft"></span>
+          </div>
+
+          <div class="vj-rating" id="ratingLine">Sem avaliações</div>
+
+          <div class="vj-address" id="address"></div>
+
+          <div class="vj-actions">
+            <button id="btnAvaliar" class="vj-btn vj-btn--primary" type="button">
+              ★ Avaliar
+            </button>
+            <a class="vj-btn vj-btn--ghost" href="./explorar.html">Explorar mais</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="vj-section">
+        <h2>Sobre</h2>
+        <p id="descricao" class="vj-text"></p>
+      </section>
+
+      <section class="vj-section">
+        <h2>Recursos de Acessibilidade</h2>
+        <div id="features" class="vj-chips"></div>
+      </section>
+
+      <section class="vj-section">
+        <div class="vj-section__head">
+          <h2>Avaliações</h2>
+          <span id="reviewsCount" class="vj-muted"></span>
+        </div>
+
+        <div id="reviews" class="vj-reviews"></div>
+
+        <!-- FORM AVALIAR -->
+        <div id="reviewBox" class="vj-reviewBox" hidden>
+          <h3>Avaliar este Local</h3>
+
+          <div class="vj-stars" id="stars" aria-label="Selecione sua nota"></div>
+
+          <label class="vj-label" for="comment">Comentário (opcional)</label>
+          <textarea
+            id="comment"
+            class="vj-input"
+            rows="4"
+            placeholder="Conte sua experiência... Como foi a acessibilidade?"
+          ></textarea>
+
+          <div class="vj-actions vj-actions--end">
+            <button id="btnCancel" class="vj-btn vj-btn--ghost" type="button">
+              Cancelar
+            </button>
+            <button id="btnSend" class="vj-btn vj-btn--primary" type="button">
+              Publicar Avaliação
+            </button>
+          </div>
+
+          <div id="msg" class="vj-msg" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ✅ MODAL LOGIN (sem localStorage) -->
+    <div
+      id="vjAuthModal"
+      class="vj-modal"
+      data-open="false"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="vjAuthTitle"
+    >
+      <div class="vj-modal__card">
+        <div class="vj-modal__head">
+          <div class="vj-modal__brand">
+            <span class="dot">📍</span>
+            <span>Venha Junto</span>
+          </div>
+
+          <button
+            id="vjAuthClose"
+            class="vj-modal__close"
+            type="button"
+            aria-label="Fechar"
+            title="Fechar"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="vj-modal__body">
+          <h2 id="vjAuthTitle">Para avaliar, faça login</h2>
+          <p>Entre ou crie sua conta para publicar uma avaliação.</p>
+
+          <div class="vj-modal_toggle">
+            <a id="vjGoLogin" class="vj-btn vj-btn--primary" href="./usuario-login.html">
+              Entrar
+            </a>
+            <a id="vjGoSignup" class="vj-btn vj-btn--ghost" href="./usuario-criar-conta.html">
+              Criar conta
+            </a>
+          </div>
+
+          <div class="vj-fineprint">
+            * O Venha Junto não realiza reservas e não intermedia pagamentos.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const modal = document.getElementById("vjAuthModal");
+        const btnClose = document.getElementById("vjAuthClose");
+        const aLogin = document.getElementById("vjGoLogin");
+        const aSignup = document.getElementById("vjGoSignup");
+
+        function openAuthModal(returnUrl) {
+          const baseLogin = "./usuario-login.html";
+          const baseSignup = "./usuario-criar-conta.html";
+          if (returnUrl) {
+            const q = `?returnUrl=${encodeURIComponent(returnUrl)}`;
+            if (aLogin) aLogin.href = baseLogin + q;
+            if (aSignup) aSignup.href = baseSignup + q;
+          } else {
+            if (aLogin) aLogin.href = baseLogin;
+            if (aSignup) aSignup.href = baseSignup;
+          }
+          modal.setAttribute("data-open", "true");
+          btnClose && btnClose.focus();
+        }
+
+        function closeAuthModal() {
+          modal.setAttribute("data-open", "false");
+        }
+
+        window.VJ_openAuthModal = openAuthModal;
+        window.VJ_closeAuthModal = closeAuthModal;
+
+        btnClose && btnClose.addEventListener("click", closeAuthModal);
+        modal.addEventListener("click", (e) => e.target === modal && closeAuthModal());
+        document.addEventListener("keydown", (e) => {
+          const isOpen = modal.getAttribute("data-open") === "true";
+          if (isOpen && e.key === "Escape") closeAuthModal();
+        });
+      })();
+    </script>
+
+    <script src="./js/local-detalhes.js" defer></script>
+     <script src="./js/vlibras.js" defer></script>
+  </body>
+</html>

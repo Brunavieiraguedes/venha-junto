@@ -1,0 +1,359 @@
+/* Home pública - SOMENTE conteúdo do index
+   (sidebar/menu/userbox ficam 100% no global.css) */
+
+/* Main */
+.main{ min-width:0; }
+
+/* Hero */
+.hero{
+  position:relative;
+  padding: 28px 18px 28px;
+  background:
+    radial-gradient(1200px 600px at 20% 15%, rgba(255,255,255,.08), transparent 60%),
+    radial-gradient(900px 500px at 85% 35%, rgba(34,197,94,.12), transparent 60%),
+    linear-gradient(135deg, #0b2b7a, #1636a5 40%, #2b2fd3);
+  color:#fff;
+  overflow:hidden;
+}
+.hero .container{ width:min(1200px, 100% - 24px); margin:0 auto; }
+.hero h1{
+  margin: 12px 0 10px;
+  font-size: clamp(28px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 900;
+  text-align:center;
+}
+.hero .highlight{
+  color: transparent;
+  background: linear-gradient(90deg, #34d399, #22d3ee);
+  -webkit-background-clip:text; background-clip:text;
+}
+.hero p{
+  margin:0 auto;
+  text-align:center;
+  color: rgba(226,232,240,.95);
+  font-size: clamp(14px, 2vw, 20px);
+  max-width: 900px;
+}
+
+/* Card de busca */
+.search-card{
+  margin: 22px auto 0;
+  width:min(980px, 100%);
+  background: rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.24);
+  padding: 16px;
+  color: var(--text);
+}
+
+.search-top{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px;
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: #ecfdf5;
+  border:1px solid #bbf7d0;
+}
+.search-top strong{ display:block; font-size:14px; }
+.search-top small{ display:block; color:#166534; font-weight:700; opacity:.9; }
+
+.switch{
+  display:inline-flex; align-items:center; gap:10px;
+  font-weight:800;
+}
+.switch input{
+  width:46px; height:26px;
+  appearance:none;
+  background:#e2e8f0;
+  border-radius:999px;
+  position:relative;
+  outline:none;
+  cursor:pointer;
+}
+.switch input::after{
+  content:"";
+  position:absolute; top:3px; left:3px;
+  width:20px; height:20px;
+  border-radius:999px;
+  background:#fff;
+  box-shadow: 0 6px 12px rgba(2,6,23,.18);
+  transition: left .18s ease, background .18s ease;
+}
+.switch input:checked{ background:#22c55e; }
+.switch input:checked::after{ left:23px; }
+
+.filters{
+  margin-top: 14px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.field label{
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  color:#475569;
+  margin: 2px 2px 6px;
+}
+.field select, .field input{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-weight:800;
+}
+.actions{
+  grid-column: 1 / -1;
+  display:flex;
+  justify-content:center;
+  margin-top: 6px;
+}
+
+/* CTA roxa */
+.cta{
+  padding: 38px 18px;
+  background: linear-gradient(90deg, #7c3aed, #4f46e5);
+  color:#fff;
+}
+.cta .wrap{
+  width:min(1200px, 100% - 32px);
+  margin:0 auto;
+  text-align:center;
+}
+.cta h2{
+  margin:0 0 10px;
+  font-size: clamp(22px, 3.3vw, 40px);
+  font-weight: 900;
+}
+.cta p{
+  margin: 0 auto 18px;
+  max-width: 760px;
+  color: rgba(255,255,255,.92);
+  font-size: 16px;
+}
+.cta .cta-actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* Seção */
+.section{
+  padding: 40px 18px;
+}
+.section h2{
+  margin:0 0 10px;
+  text-align:center;
+  font-size: 32px;
+}
+.section p.lead{
+  margin:0 auto 22px;
+  text-align:center;
+  max-width: 820px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* GRID DA LISTA */
+#listaLocais{
+  width:min(1200px, 100% - 32px);
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* CARD */
+.local-card{
+  overflow:hidden;
+  border-radius: 18px;
+  border:1px solid var(--line);
+  background:#fff;
+  box-shadow: 0 12px 30px rgba(2,6,23,.08);
+  display:flex;
+  flex-direction:column;
+  min-height: 420px;
+  text-decoration:none;
+  color: inherit;
+}
+
+.local-card img,
+.local-card .imgEmpty{
+  width:100%;
+  height: 170px;
+  object-fit: cover;
+  background:#e2e8f0;
+}
+
+.local-card .imgEmpty{
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  color:#475569;
+}
+
+.local-card .body{
+  padding: 14px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-height: 170px;
+}
+
+.local-card h3{
+  margin:0;
+  font-size:18px;
+  font-weight: 900;
+  color:#0f172a;
+  line-height: 1.15;
+
+  overflow-wrap:anywhere;
+  word-break: break-word;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  color: var(--muted);
+  font-weight:800;
+  font-size:13px;
+
+  overflow-wrap:anywhere;
+  word-break: break-word;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.desc{
+  margin:0;
+  color:#475569;
+  font-weight:800;
+  font-size:13px;
+  line-height:1.45;
+
+  overflow-wrap:anywhere;
+  word-break: break-word;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+
+  min-height: 56px;
+}
+
+.local-card .footer{
+  margin-top:auto;
+  padding: 0 14px 14px;
+}
+
+.local-card .btn{
+  width:100%;
+  border:0;
+  cursor:pointer;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  background:#2563eb;
+  color:#fff;
+}
+
+.vj-empty, .vj-error{
+  grid-column: 1 / -1;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+/* Responsivo do conteúdo */
+@media (max-width: 1050px){
+  #listaLocais{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 860px){
+  .filters{ grid-template-columns: 1fr; }
+  #listaLocais{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px){
+  #listaLocais{ grid-template-columns: 1fr; }
+}
+
+
+
+
+
+
+
+
+
+
+/* =======================================================
+   ❤️ FAVORITOS (cuito overlay) — HOME + EXPLORAR
+   ======================================================= */
+
+.local-card{
+  position: relative; /* pra posicionar o coração */
+}
+
+.fav-btn{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,.12);
+  background: rgba(255,255,255,.92);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(2,6,23,.18);
+  z-index: 5;
+  padding: 0; /* evita “barra”/botão esticado */
+}
+
+/* tira qualquer aparência padrão do botão */
+.fav-btn{
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.fav-icon{
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(239,68,68,.55); /* cinza avermelhado */
+}
+
+/* ✅ vermelho quando favoritado */
+.fav-btn.is-active .fav-icon{
+  color: rgba(239,68,68,1);
+}
+
+/* opcional: fundo levemente vermelho */
+.fav-btn.is-active{
+  border-color: rgba(239,68,68,.35);
+  background: rgba(239,68,68,.12);
+}
+
+.fav-btn:focus-visible{
+  outline: 3px solid rgba(37,99,235,.45);
+  outline-offset: 2px;
+}

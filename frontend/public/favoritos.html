@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meus Favoritos • Venha Junto</title>
+
+  <link rel="stylesheet" href="./css/global.css"/>
+  <link rel="stylesheet" href="./css/favoritos.css"/>
+</head>
+
+<body data-auth="required">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Topbar mobile -->
+  <header class="mobile-topbar" role="banner">
+    <button
+      id="btnMenu"
+      class="btn btn--ghost"
+      aria-controls="sidebar"
+      aria-expanded="false"
+      type="button"
+    >☰ Menu</button>
+
+    <div class="title">Venha Junto</div>
+
+    <a class="btn btn--ghost" href="./parceiro.html">Sou parceiro</a>
+  </header>
+
+  <div class="page">
+    <!-- Sidebar pública -->
+    <aside id="sidebar" class="sidebar" data-open="false" aria-label="Navegação principal">
+      <div class="brand" aria-label="Marca Venha Junto">
+        <div class="logo" aria-hidden="true">
+          <img src="../assets/img/logo-acessibilidade.png" alt="" class="logo-img">
+        </div>
+
+        <div>
+          <strong>Venha Junto</strong>
+          <span>Turismo Acessível em São Paulo</span>
+        </div>
+      </div>
+
+      <p class="nav-title">Área pública</p>
+      <nav class="menu" aria-label="Menu público">
+        <a href="./index.html">Início</a>
+        <a href="./explorar.html">Explorar Locais</a>
+        <a href="./favoritos.html" aria-current="page">Meus Favoritos</a>
+        <a href="./parceiro.html">Sou parceiro</a>
+      </nav>
+
+      <!-- ✅ USERBOX PADRÃO -->
+      <div id="userBox" class="userbox" aria-label="Usuário atual" style="cursor:pointer">
+        <div class="avatar" aria-hidden="true">👤</div>
+        <div>
+          <strong id="userName" style="display:block">Usuário</strong>
+          <small id="userEmail">visitante@venhajunto.com</small>
+        </div>
+      </div>
+    </aside>
+
+    <main id="conteudo" class="main" role="main">
+      <div class="content">
+        <!-- Cabeçalho da página -->
+        <header class="page-header" aria-label="Cabeçalho de favoritos">
+          <button id="btnVoltar" class="back-btn" type="button" aria-label="Voltar">
+            ←
+          </button>
+
+          <div class="header-text">
+            <h1>Meus Favoritos</h1>
+            <p>Salve e organize seus locais favoritos para visitar depois</p>
+          </div>
+        </header>
+
+        <!-- Estado vazio -->
+        <section id="emptyState" class="empty" aria-label="Nenhum favorito salvo">
+          <div class="empty-icon" aria-hidden="true">
+            <span class="heart">♡</span>
+          </div>
+
+          <h2>Nenhum favorito salvo ainda</h2>
+          <p>Explore locais e clique no coração para salvá-los aqui</p>
+
+          <button id="btnExplorar" class="btn-primary" type="button">
+            Explorar Locais
+          </button>
+        </section>
+
+        <!-- Lista (quando tiver favoritos) -->
+        <section id="listaFavoritos" class="favorites-list" aria-label="Lista de favoritos" hidden>
+          <!-- ✅ É AQUI que os cards entram -->
+          <div class="grid" id="gridFavoritos"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- scripts -->
+  <script src="./js/api.js" defer></script>
+  <script src="./js/userbox.js" defer></script>
+  <script src="./js/page-guard.js" defer></script>
+  <script src="./js/favoritos.js" defer></script>
+  <script src="./js/vlibras.js" defer></script>
+</body>
+</html>

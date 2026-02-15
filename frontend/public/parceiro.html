@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VenhaJunto • Parceiros</title>
+
+    <style>
+      :root {
+        --bg1: #0b2a7a;
+        --bg2: #6b2bd9;
+        --text: #ffffff;
+        --muted: rgba(255,255,255,0.85);
+
+        --card: #ffffff;
+        --cardText: #0f172a;
+
+        --primary: #2563eb;
+
+        --shadow: 0 26px 70px rgba(2, 6, 23, 0.30);
+        --radius: 18px;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        background: radial-gradient(1100px 600px at 30% 20%, rgba(255,255,255,0.10), transparent 55%),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      .topbar {
+        height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 28px;
+      }
+
+      .brand {
+        font-weight: 900;
+        letter-spacing: 0.2px;
+      }
+
+      .toplinks {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        font-weight: 800;
+      }
+
+      .toplinks a {
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.95;
+      }
+      .toplinks a:hover { opacity: 1; text-decoration: underline; }
+
+      .container {
+        width: min(1200px, 92vw);
+        margin: 0 auto;
+        padding: 26px 0 60px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 28px;
+        align-items: start;
+        margin-top: 10px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(34px, 4.2vw, 54px);
+        line-height: 1.05;
+        letter-spacing: -1px;
+      }
+
+      .lead {
+        margin: 0 0 18px;
+        max-width: 56ch;
+        font-weight: 650;
+        color: var(--muted);
+      }
+
+      .checks {
+        list-style: none;
+        padding: 0;
+        margin: 16px 0 0;
+        display: grid;
+        gap: 10px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .checks li {
+        display: flex;
+        gap: 10px;
+        align-items: start;
+      }
+
+      .checks .icon {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: rgba(34,197,94,0.20);
+        display: grid;
+        place-items: center;
+        margin-top: 2px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255,255,255,0.18);
+      }
+      .stat strong { font-size: 22px; }
+      .stat span { display:block; color: var(--muted); font-weight: 700; }
+
+      .right {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        background: var(--card);
+        color: var(--cardText);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        border: 2px solid #facc15;
+      }
+
+      .cardBody { padding: 18px 18px 16px; }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        letter-spacing: -0.2px;
+      }
+
+      .mini {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 12px;
+        display: grid;
+        gap: 10px;
+        color: #0f172a;
+        font-weight: 700;
+      }
+
+      .mini li { display:flex; gap: 10px; align-items: start; }
+      .mini .ok {
+        width: 18px; height: 18px; border-radius: 999px;
+        background: rgba(34,197,94,0.18);
+        display: grid; place-items: center;
+        margin-top: 2px;
+      }
+
+      /* ✅ botão com cara de botão, mas é <a> */
+      .ctaBtn {
+        width: 100%;
+        border: 0;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .ctaBtn:hover { filter: brightness(1.03); }
+
+      .cardFooter {
+        text-align: center;
+        padding: 10px 14px 14px;
+        color: #2563eb;
+        font-weight: 900;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .pill {
+        background: rgba(255,255,255,0.92);
+        color: #0f172a;
+        border-radius: 14px;
+        padding: 14px 16px;
+        display:flex;
+        gap: 12px;
+        align-items: center;
+        border: 1px solid #e5e7eb;
+      }
+      .pill strong { display:block; }
+      .pill small { color: #64748b; font-weight: 700; }
+
+      .sectionTitle {
+        text-align: center;
+        margin: 34px 0 18px;
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .benefits {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .bcard {
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 18px;
+        min-height: 120px;
+      }
+      .bcard .ico {
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.12);
+        display: grid;
+        place-items: center;
+        margin-bottom: 10px;
+        font-weight: 900;
+      }
+      .bcard h4 { margin: 0 0 8px; font-weight: 900; }
+      .bcard p { margin: 0; color: var(--muted); font-weight: 650; }
+
+      .bottomCta {
+        margin-top: 22px;
+        text-align: center;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .bottomBtn {
+        margin-top: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.30);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 900;
+        background: rgba(0,0,0,0.08);
+      }
+
+      .bottomBtn:hover { background: rgba(0,0,0,0.14); }
+
+      @media (max-width: 980px) {
+        .hero { grid-template-columns: 1fr; }
+        .benefits { grid-template-columns: 1fr; }
+        .stats { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="brand">VenhaJunto</div>
+
+      <nav class="toplinks">
+        <a href="./parceiro-login.html">Entrar</a>
+        <a href="./index.html">Voltar ao site</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero" aria-label="Parceiros VenhaJunto">
+        <div>
+          <h1>Anuncie seu<br />estabelecimento no<br />Venha Junto</h1>
+
+          <p class="lead">
+            Anuncie na plataforma de turismo acessível mais baixada de São Paulo para ganhar
+            mais visibilidade e alcançar novos públicos.
+          </p>
+
+          <ul class="checks">
+            <li><span class="icon">✓</span>45% dos estabelecimentos recebem mais visitantes em até 1 semana</li>
+            <li><span class="icon">✓</span>Escolha entre planos gratuitos ou pagos para mais destaque</li>
+            <li><span class="icon">✓</span>Vamos facilitar o gerenciamento do seu estabelecimento</li>
+          </ul>
+
+          <div class="stats" aria-label="Números">
+            <div class="stat"><strong>28M+</strong><span>Anúncios ativos</span></div>
+            <div class="stat"><strong>220+</strong><span>Países e regiões</span></div>
+            <div class="stat"><strong>1.5M+</strong><span>Parceiros ativos</span></div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="card" aria-label="Cadastro gratuito">
+            <div class="cardBody">
+              <h3>Cadastre-se gratuitamente</h3>
+
+              <ul class="mini">
+                <li><span class="ok">✓</span>45% dos estabelecimentos recebem mais visitantes em até 1 semana</li>
+                <li><span class="ok">✓</span>Escolha entre planos gratuitos ou pagos para mais destaque</li>
+                <li><span class="ok">✓</span>Vamos facilitar o gerenciamento dos seus anúncios</li>
+              </ul>
+
+              <!-- ✅ AGORA VAI DIRETO PARA parceiro-cadastro.html -->
+              <a class="ctaBtn" href="./parceiro-criar-conta.html">
+                Comece agora <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <div class="cardFooter">
+              <a href="./parceiro-login.html" style="text-decoration:none; color:#2563eb;">
+                Já começou um cadastro?
+              </a>
+            </div>
+          </div>
+
+          <div class="pill">
+            <div style="width:34px;height:34px;border-radius:12px;background:#e0e7ff;display:grid;place-items:center;font-weight:900;">🛡️</div>
+            <div>
+              <strong>Verificação de Acessibilidade</strong>
+              <small>Certificação profissional incluída</small>
+            </div>
+          </div>
+
+          <div class="pill">
+            <div style="width:34px;height:34px;border-radius:12px;background:#f3e8ff;display:grid;place-items:center;font-weight:900;">📊</div>
+            <div>
+              <strong>Analytics em Tempo Real</strong>
+              <small>Monitore visualizações e cliques</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="sectionTitle">Por que anunciar no Venha Junto?</h2>
+
+      <section class="benefits" aria-label="Benefícios">
+        <div class="bcard">
+          <div class="ico">🌐</div>
+          <h4>Alcance Nacional</h4>
+          <p>Milhares de turistas acessam nossa plataforma diariamente buscando locais acessíveis.</p>
+        </div>
+        <div class="bcard">
+          <div class="ico">⭐</div>
+          <h4>Credibilidade</h4>
+          <p>Selo de verificação e avaliações reais aumentam a confiança dos visitantes.</p>
+        </div>
+        <div class="bcard">
+          <div class="ico">⚡</div>
+          <h4>Gestão Simples</h4>
+          <p>Dashboard intuitivo para gerenciar anúncios, fotos e informações de acessibilidade.</p>
+        </div>
+      </section>
+
+      <div class="bottomCta">
+        Junte-se a mais de 1.5 milhão de estabelecimentos que confiam no Venha Junto
+        <div>
+          <!-- ✅ botão de baixo também vai direto -->
+          <a class="bottomBtn" href="./parceiro-cadastro.html">Comece agora gratuitamente</a>
+          <script src="./js/vlibras.js" defer></script>
+
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

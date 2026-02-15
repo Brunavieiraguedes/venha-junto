@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meus Estabelecimentos • Venha Junto</title>
+  <style>
+    :root{--bg:#f5f7fb;--card:#fff;--text:#0b1220;--muted:#5b677a;--border:#e7ecf4;--shadow:0 18px 40px rgba(15,23,42,.08);--blue:#2563eb;--r:18px}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    .layout{display:flex;min-height:100vh}
+    .side{width:280px;background:#fff;border-right:1px solid var(--border);padding:18px 16px;position:sticky;top:0;height:100vh}
+    .brand{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px}
+    .brand-badge{width:40px;height:40px;border-radius:12px;background:#2563eb;display:grid;place-items:center;color:#fff;font-weight:900}
+    .brand h3{margin:0;font-size:18px}
+    .brand p{margin:2px 0 0;color:var(--muted);font-size:12px}
+    .nav-title{margin:18px 10px 10px;color:#7b879a;font-size:12px;letter-spacing:.08em}
+    .nav a{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;margin:6px 6px;color:#1f2a44}
+    .nav a.active{background:#eef4ff;color:#0b3ea8;font-weight:800}
+    .nav a:hover{background:#f3f6ff}
+    .content{flex:1;padding:26px 26px 60px}
+    .wrap{max-width:980px;margin:0 auto}
+    h1{margin:0 0 6px;font-size:26px}
+    .sub{margin:0;color:var(--muted)}
+    .head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0}
+    .btn{display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:#fff;font-weight:900}
+    .btn.primary{background:var(--blue);border-color:transparent;color:#fff}
+    .card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:0 12px 30px rgba(15,23,42,.06);padding:14px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .item{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff}
+    .thumb{height:140px;background:#e9eef7;display:grid;place-items:center;color:#64748b;font-weight:900}
+    .body{padding:12px}
+    .body b{display:block}
+    .body small{color:var(--muted)}
+    .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;border-radius:999px;padding:4px 10px;border:1px solid var(--border);background:#fff;color:#1f2a44}
+    .tag.warn{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
+    @media (max-width: 980px){.side{display:none}.content{padding:18px}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="side">
+      <div class="brand">
+        <div class="brand-badge">VJ</div>
+        <div><h3>Venha Junto</h3><p>Turismo Acessível em São Paulo</p></div>
+      </div>
+      <div class="nav-title">ÁREA ADMINISTRATIVA</div>
+      <nav class="nav">
+        <a href="./parceiro-dashboard.html">🏠 Início</a>
+        <a href="./parceiro-dashboard.html#dash">📊 Dashboard</a>
+        <a class="active" href="./parceiro-meus-estabelecimentos.html">📍 Meus Estabelecimentos</a>
+        <a href="./planos.html">👑 Meu Plano</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="wrap">
+        <h1>Meus Estabelecimentos</h1>
+        <p class="sub">Gerencie seus locais cadastrados</p>
+
+        <div class="head">
+          <div></div>
+          <a class="btn primary" href="./parceiro.html">＋ Adicionar Local</a>
+        </div>
+
+        <div class="card">
+          <div class="grid" id="lista"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const listaEl = document.getElementById("lista");
+    const locais = JSON.parse(localStorage.getItem("vj_locais") || "[]");
+
+    function cardHTML(l){
+      const tags = (l.tags || []).map(t=>`<span class="tag">${t}</span>`).join("");
+      return `
+        <div class="item">
+          <div class="thumb">📍</div>
+          <div class="body">
+            <b>${l.nome || "Local"}</b>
+            <small>${l.bairro || "—"}, ${l.cidade || "São Paulo"}</small>
+            <div class="tags">
+              ${tags}
+              <span class="tag warn">${l.status || "Rascunho"}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    if(locais.length === 0){
+      listaEl.innerHTML = `
+        <div style="grid-column:1/-1;color:#5b677a;padding:10px">
+          Você ainda não cadastrou nenhum estabelecimento. Clique em <b>Adicionar Local</b> para começar.
+        </div>
+      `;
+    } else {
+      listaEl.innerHTML = locais.map(cardHTML).join("");
+    }
+  </script>
+</body>
+</html>
