@@ -41,6 +41,10 @@ app.add_middleware(
         "http://localhost:5501",
         "http://127.0.0.1:8000",
         "http://localhost:8000",
+
+        #A URL DO SEU FRONT NO RENDER AQUI:
+       "https://venha-junto-acessivel.onrender.com",
+      
     ],
     allow_credentials=True,
     allow_methods=["*"],
