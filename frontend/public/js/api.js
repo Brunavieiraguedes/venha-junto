@@ -1,5 +1,9 @@
-const API_BASE = "http://127.0.0.1:8000";
 
+const API_BASE =
+  window.location.hostname === "http://127.0.0.1:8000" ||
+  window.location.hostname === "localhost"
+    ? "http://127.0.0.1:8000"                  // DEV (local)
+    : "https://venha-junto-h54n.onrender.com"; // PROD (Render)
 /**
  * ✅ Converte qualquer tipo de erro em mensagem legível (string)
  * - suporta FastAPI: { detail: "..." } ou { detail: [...] } ou { detail: {..} }
