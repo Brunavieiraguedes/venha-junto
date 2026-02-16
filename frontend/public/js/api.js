@@ -1,6 +1,6 @@
 
 const API_BASE =
-  window.location.hostname === "http://127.0.0.1:8000" ||
+  window.location.hostname === "http://127.0.0.1" ||
   window.location.hostname === "localhost"
     ? "http://127.0.0.1:8000"                  // DEV (local)
     : "https://venha-junto-h54n.onrender.com"; // PROD (Render)
